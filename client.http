@@ -1,0 +1,146 @@
+//Default route
+###
+GET http://localhost:5000/
+
+
+
+ //..........................................USER.......................................................//
+
+//get all users
+###
+GET http://localhost:5000/api/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiZGFuaWVsQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZGFuaWVsIiwidXNlclR5cGUiOiJhZG1pbiIsImV4cCI6MTc0OTA1NDkzMCwiaWF0IjoxNzQ5MDUxMzMwfQ.u5e51kHHu6DK-SDQ2Imi0gApMITH6dY-Mq3KNLAATCM
+
+
+//get user by Id
+###
+GET http://localhost:5000/api/users/1
+
+//register a user
+###
+POST http://localhost:5000/api/auth/register
+content-type: application/json
+
+{
+    "fullName": "daniel",
+    "email":"daniel@gmail.com",
+    "password":"admin",
+    "userType": "admin"
+    
+}
+
+
+//login a user
+###
+POST http://localhost:5000/api/auth/login
+content-type: application/json
+
+{ 
+    "email":"daniel@gmail.com",
+    "password":"admin"
+    
+}
+
+
+//Update user
+###
+PUT  http://localhost:5000/api/users/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiZnVsbE5hbWUiOiJhZG1pbiIsInVzZXJUeXBlIjoiYWRtaW4iLCJleHAiOjE3NDkwNTA5NjksImlhdCI6MTc0OTA0NzM2OX0.7zUvcqkawulbvmWhkC8VsuzxI7N8zn75TUbIiMuj5sc
+content-type: application/json
+
+{
+    "fullName": "ka guru",
+    "email":"kaguru@gmail.com",
+    "password":"ka guru"
+}
+
+//delete user
+### 
+DELETE http://localhost:5000/api/users/4
+  
+
+
+ // .......................................................state...............................................................//
+
+
+ //get all states
+###
+GET http://localhost:5000/api/states
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiZnVsbE5hbWUiOiJhZG1pbiIsInVzZXJUeXBlIjoiYWRtaW4iLCJleHAiOjE3NDkwNTA5NjksImlhdCI6MTc0OTA0NzM2OX0.7zUvcqkawulbvmWhkC8VsuzxI7N8zn75TUbIiMuj5sc
+
+
+//get state by Id
+###
+GET http://localhost:5000/api/states/1
+Authorization: 
+
+//create state
+###
+POST http://localhost:5000/api/states
+content-type: application/json
+Authorization: 
+
+{
+    "stateName":"louis port",
+    "stateCode":"amiri port fuelaluope"
+    
+    
+}
+
+//Update state
+###
+PUT  http://localhost:5000/api/states/1
+content-type: application/json
+
+{
+    "stateName":"louis port",
+    "stateCode":"amiri port fuelaluope"
+}
+
+//delete user
+### 
+DELETE http://localhost:5000/api/states/1
+Authorization: 
+  
+
+
+
+//......................................................................CITY.........................................................................//
+
+
+  //get all cities
+###
+GET http://localhost:5000/api/city
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiZnVsbE5hbWUiOiJhZG1pbiIsInVzZXJUeXBlIjoiYWRtaW4iLCJleHAiOjE3NDkwNTA5NjksImlhdCI6MTc0OTA0NzM2OX0.7zUvcqkawulbvmWhkC8VsuzxI7N8zn75TUbIiMuj5sc
+
+
+//get city by Id
+###
+GET http://localhost:5000/api/city/1
+
+//create city
+###
+POST http://localhost:5000/api/city
+content-type: application/json
+
+{
+    "cityName": "Denvar",
+    "stateId":"louis port",
+    
+    
+}
+
+//Update city
+###
+PUT  http://localhost:5000/api/city/1
+content-type: application/json
+
+{
+    "cityName": "Denvar",
+    "stateId":"moscow",
+}
+
+//delete city
+### 
+DELETE http://localhost:5000/api/city/1
+  

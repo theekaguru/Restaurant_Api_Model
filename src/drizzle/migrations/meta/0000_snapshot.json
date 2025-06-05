@@ -1,0 +1,1128 @@
+{
+  "id": "47019b39-dee1-4fd0-a228-ccfc9ce35e98",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.Address_Table": {
+      "name": "Address_Table",
+      "schema": "",
+      "columns": {
+        "Address_Id": {
+          "name": "Address_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Street_Address_1": {
+          "name": "Street_Address_1",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Street_Address_2": {
+          "name": "Street_Address_2",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Zip_Code": {
+          "name": "Zip_Code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Delivery_Instructions": {
+          "name": "Delivery_Instructions",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "User_Id": {
+          "name": "User_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "City_Id": {
+          "name": "City_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Address_Table_User_Id_User_Table_User_Id_fk": {
+          "name": "Address_Table_User_Id_User_Table_User_Id_fk",
+          "tableFrom": "Address_Table",
+          "tableTo": "User_Table",
+          "columnsFrom": [
+            "User_Id"
+          ],
+          "columnsTo": [
+            "User_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Address_Table_City_Id_City_Table_City_Id_fk": {
+          "name": "Address_Table_City_Id_City_Table_City_Id_fk",
+          "tableFrom": "Address_Table",
+          "tableTo": "City_Table",
+          "columnsFrom": [
+            "City_Id"
+          ],
+          "columnsTo": [
+            "City_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Category_Table": {
+      "name": "Category_Table",
+      "schema": "",
+      "columns": {
+        "Category_Id": {
+          "name": "Category_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Category_Name": {
+          "name": "Category_Name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.City_Table": {
+      "name": "City_Table",
+      "schema": "",
+      "columns": {
+        "City_Id": {
+          "name": "City_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "City_Name": {
+          "name": "City_Name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "State_Id": {
+          "name": "State_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "City_Table_State_Id_State_Table_State_Id_fk": {
+          "name": "City_Table_State_Id_State_Table_State_Id_fk",
+          "tableFrom": "City_Table",
+          "tableTo": "State_Table",
+          "columnsFrom": [
+            "State_Id"
+          ],
+          "columnsTo": [
+            "State_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Comment_Table": {
+      "name": "Comment_Table",
+      "schema": "",
+      "columns": {
+        "Comment_Id": {
+          "name": "Comment_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Order_Id": {
+          "name": "Order_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "User_Id": {
+          "name": "User_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Comment_Text": {
+          "name": "Comment_Text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Is_Complaint": {
+          "name": "Is_Complaint",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Is_Praise": {
+          "name": "Is_Praise",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Comment_Table_Order_Id_Orders_Table_Orders_Id_fk": {
+          "name": "Comment_Table_Order_Id_Orders_Table_Orders_Id_fk",
+          "tableFrom": "Comment_Table",
+          "tableTo": "Orders_Table",
+          "columnsFrom": [
+            "Order_Id"
+          ],
+          "columnsTo": [
+            "Orders_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Comment_Table_User_Id_User_Table_User_Id_fk": {
+          "name": "Comment_Table_User_Id_User_Table_User_Id_fk",
+          "tableFrom": "Comment_Table",
+          "tableTo": "User_Table",
+          "columnsFrom": [
+            "User_Id"
+          ],
+          "columnsTo": [
+            "User_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Driver_Table": {
+      "name": "Driver_Table",
+      "schema": "",
+      "columns": {
+        "Driver_Id": {
+          "name": "Driver_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Car_Make": {
+          "name": "Car_Make",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Car_Model": {
+          "name": "Car_Model",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Car_Year": {
+          "name": "Car_Year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "User_Id": {
+          "name": "User_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Online": {
+          "name": "Online",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "Delivering": {
+          "name": "Delivering",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Driver_Table_User_Id_User_Table_User_Id_fk": {
+          "name": "Driver_Table_User_Id_User_Table_User_Id_fk",
+          "tableFrom": "Driver_Table",
+          "tableTo": "User_Table",
+          "columnsFrom": [
+            "User_Id"
+          ],
+          "columnsTo": [
+            "User_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Menu_Item_Table": {
+      "name": "Menu_Item_Table",
+      "schema": "",
+      "columns": {
+        "Menu_Item_Id": {
+          "name": "Menu_Item_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Menu_Name": {
+          "name": "Menu_Name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Restaurant_Id": {
+          "name": "Restaurant_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Category_Id": {
+          "name": "Category_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Ingredients": {
+          "name": "Ingredients",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Price": {
+          "name": "Price",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Active": {
+          "name": "Active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": true
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Menu_Item_Table_Restaurant_Id_Restaurant_Table_Restaurant_Id_fk": {
+          "name": "Menu_Item_Table_Restaurant_Id_Restaurant_Table_Restaurant_Id_fk",
+          "tableFrom": "Menu_Item_Table",
+          "tableTo": "Restaurant_Table",
+          "columnsFrom": [
+            "Restaurant_Id"
+          ],
+          "columnsTo": [
+            "Restaurant_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Menu_Item_Table_Category_Id_Category_Table_Category_Id_fk": {
+          "name": "Menu_Item_Table_Category_Id_Category_Table_Category_Id_fk",
+          "tableFrom": "Menu_Item_Table",
+          "tableTo": "Category_Table",
+          "columnsFrom": [
+            "Category_Id"
+          ],
+          "columnsTo": [
+            "Category_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Order_Menu_Item_Table": {
+      "name": "Order_Menu_Item_Table",
+      "schema": "",
+      "columns": {
+        "Order_Menu_Item_Id": {
+          "name": "Order_Menu_Item_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Order_Id": {
+          "name": "Order_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Menu_Item_Id": {
+          "name": "Menu_Item_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Quantity": {
+          "name": "Quantity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Item_Price": {
+          "name": "Item_Price",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Price": {
+          "name": "Price",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Comment": {
+          "name": "Comment",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Order_Menu_Item_Table_Order_Id_Orders_Table_Orders_Id_fk": {
+          "name": "Order_Menu_Item_Table_Order_Id_Orders_Table_Orders_Id_fk",
+          "tableFrom": "Order_Menu_Item_Table",
+          "tableTo": "Orders_Table",
+          "columnsFrom": [
+            "Order_Id"
+          ],
+          "columnsTo": [
+            "Orders_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Order_Menu_Item_Table_Menu_Item_Id_Menu_Item_Table_Menu_Item_Id_fk": {
+          "name": "Order_Menu_Item_Table_Menu_Item_Id_Menu_Item_Table_Menu_Item_Id_fk",
+          "tableFrom": "Order_Menu_Item_Table",
+          "tableTo": "Menu_Item_Table",
+          "columnsFrom": [
+            "Menu_Item_Id"
+          ],
+          "columnsTo": [
+            "Menu_Item_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Order_Status_Table": {
+      "name": "Order_Status_Table",
+      "schema": "",
+      "columns": {
+        "Order_Status_Id": {
+          "name": "Order_Status_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Order_Id": {
+          "name": "Order_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Status_Catalog_Id": {
+          "name": "Status_Catalog_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Order_Status_Table_Order_Id_Orders_Table_Orders_Id_fk": {
+          "name": "Order_Status_Table_Order_Id_Orders_Table_Orders_Id_fk",
+          "tableFrom": "Order_Status_Table",
+          "tableTo": "Orders_Table",
+          "columnsFrom": [
+            "Order_Id"
+          ],
+          "columnsTo": [
+            "Orders_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Order_Status_Table_Status_Catalog_Id_Status_Catalog_Table_Status_Catalog_Id_fk": {
+          "name": "Order_Status_Table_Status_Catalog_Id_Status_Catalog_Table_Status_Catalog_Id_fk",
+          "tableFrom": "Order_Status_Table",
+          "tableTo": "Status_Catalog_Table",
+          "columnsFrom": [
+            "Status_Catalog_Id"
+          ],
+          "columnsTo": [
+            "Status_Catalog_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Orders_Table": {
+      "name": "Orders_Table",
+      "schema": "",
+      "columns": {
+        "Orders_Id": {
+          "name": "Orders_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Restaurant_Id": {
+          "name": "Restaurant_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Estimated_Delivery_Time": {
+          "name": "Estimated_Delivery_Time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Actual_Delivery_Time": {
+          "name": "Actual_Delivery_Time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Delivery_Address_Id": {
+          "name": "Delivery_Address_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "User_Id": {
+          "name": "User_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Driver_Id": {
+          "name": "Driver_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Price": {
+          "name": "Price",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Discount": {
+          "name": "Discount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Final_Price": {
+          "name": "Final_Price",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Comment": {
+          "name": "Comment",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Orders_Table_Restaurant_Id_Restaurant_Table_Restaurant_Id_fk": {
+          "name": "Orders_Table_Restaurant_Id_Restaurant_Table_Restaurant_Id_fk",
+          "tableFrom": "Orders_Table",
+          "tableTo": "Restaurant_Table",
+          "columnsFrom": [
+            "Restaurant_Id"
+          ],
+          "columnsTo": [
+            "Restaurant_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Orders_Table_Delivery_Address_Id_Address_Table_Address_Id_fk": {
+          "name": "Orders_Table_Delivery_Address_Id_Address_Table_Address_Id_fk",
+          "tableFrom": "Orders_Table",
+          "tableTo": "Address_Table",
+          "columnsFrom": [
+            "Delivery_Address_Id"
+          ],
+          "columnsTo": [
+            "Address_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Orders_Table_User_Id_User_Table_User_Id_fk": {
+          "name": "Orders_Table_User_Id_User_Table_User_Id_fk",
+          "tableFrom": "Orders_Table",
+          "tableTo": "User_Table",
+          "columnsFrom": [
+            "User_Id"
+          ],
+          "columnsTo": [
+            "User_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Orders_Table_Driver_Id_Driver_Table_Driver_Id_fk": {
+          "name": "Orders_Table_Driver_Id_Driver_Table_Driver_Id_fk",
+          "tableFrom": "Orders_Table",
+          "tableTo": "Driver_Table",
+          "columnsFrom": [
+            "Driver_Id"
+          ],
+          "columnsTo": [
+            "Driver_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Restaurant_Owner_Table": {
+      "name": "Restaurant_Owner_Table",
+      "schema": "",
+      "columns": {
+        "Restaurant_Owner_Id": {
+          "name": "Restaurant_Owner_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Restaurant_Id": {
+          "name": "Restaurant_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Owner_Id": {
+          "name": "Owner_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Restaurant_Owner_Table_Restaurant_Id_Restaurant_Table_Restaurant_Id_fk": {
+          "name": "Restaurant_Owner_Table_Restaurant_Id_Restaurant_Table_Restaurant_Id_fk",
+          "tableFrom": "Restaurant_Owner_Table",
+          "tableTo": "Restaurant_Table",
+          "columnsFrom": [
+            "Restaurant_Id"
+          ],
+          "columnsTo": [
+            "Restaurant_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Restaurant_Owner_Table_Owner_Id_User_Table_User_Id_fk": {
+          "name": "Restaurant_Owner_Table_Owner_Id_User_Table_User_Id_fk",
+          "tableFrom": "Restaurant_Owner_Table",
+          "tableTo": "User_Table",
+          "columnsFrom": [
+            "Owner_Id"
+          ],
+          "columnsTo": [
+            "User_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Restaurant_Table": {
+      "name": "Restaurant_Table",
+      "schema": "",
+      "columns": {
+        "Restaurant_Id": {
+          "name": "Restaurant_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Restaurant_Name": {
+          "name": "Restaurant_Name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Street_Address": {
+          "name": "Street_Address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Zip_Code": {
+          "name": "Zip_Code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "City_Id": {
+          "name": "City_Id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Restaurant_Table_City_Id_City_Table_City_Id_fk": {
+          "name": "Restaurant_Table_City_Id_City_Table_City_Id_fk",
+          "tableFrom": "Restaurant_Table",
+          "tableTo": "City_Table",
+          "columnsFrom": [
+            "City_Id"
+          ],
+          "columnsTo": [
+            "City_Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.State_Table": {
+      "name": "State_Table",
+      "schema": "",
+      "columns": {
+        "State_Id": {
+          "name": "State_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "State_Name": {
+          "name": "State_Name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Code": {
+          "name": "Code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Status_Catalog_Table": {
+      "name": "Status_Catalog_Table",
+      "schema": "",
+      "columns": {
+        "Status_Catalog_Id": {
+          "name": "Status_Catalog_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Status_Catalog_Name": {
+          "name": "Status_Catalog_Name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.User_Table": {
+      "name": "User_Table",
+      "schema": "",
+      "columns": {
+        "User_Id": {
+          "name": "User_Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Full_Name": {
+          "name": "Full_Name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Contact_Phone": {
+          "name": "Contact_Phone",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Phone_Verified": {
+          "name": "Phone_Verified",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "Email": {
+          "name": "Email",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Email_Verified": {
+          "name": "Email_Verified",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "Confirmation_Code": {
+          "name": "Confirmation_Code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Password": {
+          "name": "Password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "User_Type": {
+          "name": "User_Type",
+          "type": "role",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'member'"
+        },
+        "Created_At": {
+          "name": "Created_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "Updated_At": {
+          "name": "Updated_At",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "admin",
+        "driver",
+        "owner",
+        "member"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
