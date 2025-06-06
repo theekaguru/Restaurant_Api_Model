@@ -18,19 +18,18 @@ GET http://localhost:5000/api/users/1
 
 //register a user
 ###
-POST http://localhost:5000/api/auth/register
+POST http://localhost:5000/api/users
 content-type: application/json
 
 {
-    "Full_Name":"daniel" , 
-    "Contact_Phone": 1020, 
+    "Full_Name": "daniel",
+    "Contact_Phone": 1020,
     "Phone_Verified": false,
     "Email": "daniel@gmail.com",
     "Email_verified": false,
-    "Confirmation_Code":"A1020" ,
-    "Password":"daniel 123",
-    "User_Type":"member"
-    
+    "Confirmation_Code": "A1020",
+    "Password": "daniel123",
+    "User_Type": "member"
 }
 
 //login a user
@@ -151,3 +150,175 @@ content-type: application/json
 ### 
 DELETE http://localhost:5000/api/city/1
   
+
+  //......................................................................menu_Item.........................................................................//
+
+//get all menu items
+###
+GET http://localhost:5000/api/menu_items
+Authorization: <your_token>
+
+//get menu item by Id  
+### 
+GET http://localhost:5000/api/menu_items/1
+
+//create menu item
+###
+POST http://localhost:5000/api/menu_items
+content-type: application/json
+
+{
+   "Menu_Item_Name": "Pizza",
+   "Restaurant_Id": 1,
+   "Category_Id": 500,
+   "Description": "pizza.jpg",
+   "Ingredients": 1,
+   "Price": 500,
+   "Active": true
+}
+
+//update menu item
+###
+PUT http://localhost:5000/api/menu_items/1
+content-type: application/json
+
+{
+    "Menu_Item_Name": "Pizza",
+    "Restaurant_Id": 1,
+    "Category_Id": 500,
+    "Description": "pizza.jpg",
+    "Ingredients": 1,
+    "Price": 500,
+    "Active": true
+}
+
+//delete menu item
+###
+DELETE http://localhost:5000/api/menu_items/1
+
+//.......................................................driver...............................................................//
+
+//get all drivers
+###
+GET http://localhost:5000/api/drivers
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiZGFuaWVsQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZGFuaWVsIiwidXNlclR5cGUiOiJhZG1pbiIsImV4cCI6MTc0OTA1NDkzMCwiaWF0IjoxNzQ5MDUxMzMwfQ.u5e51kHHu6DK-SDQ2Imi0gApMITH6dY-Mq3KNLAATCM
+
+//get driver by Id
+###
+GET http://localhost:5000/api/drivers/1
+
+//create driver
+###
+POST http://localhost:5000/api/drivers
+content-type: application/json
+
+{
+    "Car_Make": "Toyota",
+    "Car_Model": "Corolla",
+    "Car_Year": 2020,
+    "User_Id": 1,
+    "Online": true,
+    "Delivering": false
+}
+
+//Update driver
+###
+PUT  http://localhost:5000/api/drivers/1
+content-type: application/json
+
+{
+    "Car_Make": "Toyota",
+    "Car_Model": "Corolla",
+    "Car_Year": 2020,
+    "User_Id": 1,
+    "Online": true,
+    "Delivering": false
+}
+
+//delete driver
+###
+DELETE http://localhost:5000/api/drivers/1
+
+//.......................................................address...............................................................//
+
+//get all addresses
+###
+GET http://localhost:5000/api/addresses
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiZGFuaWVsQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZGFuaWVsIiwidXNlclR5cGUiOiJhZG1pbiIsImV4cCI6MTc0OTA1NDkzMCwiaWF0IjoxNzQ5MDUxMzMwfQ.u5e51kHHu6DK-SDQ2Imi0gApMITH6dY-Mq3KNLAATCM
+
+//get address by Id
+###
+GET http://localhost:5000/api/addresses/1
+
+//create address
+###
+POST http://localhost:5000/api/addresses
+content-type: application/json
+
+{
+    "Street_Address_1": "123 Main St",
+    "Street_Address_2": "Apt 4B",
+    "Zip_Code": "10001",
+    "Delivery_Instructions": "Leave at front door",
+    "User_Id": 1,
+    "City_Id": 1
+}
+
+//Update address
+###
+PUT  http://localhost:5000/api/addresses/1
+content-type: application/json
+
+{
+    "Street_Address_1": "123 Main St",
+    "Street_Address_2": "Apt 4B",
+    "Zip_Code": "10001",
+    "Delivery_Instructions": "Leave at front door",
+    "User_Id": 1,
+    "City_Id": 1
+}
+
+//delete address
+###
+DELETE http://localhost:5000/api/addresses/1
+
+
+//.......................................................orders_menu_items...............................................................//
+//get all order menu items
+###
+GET http://localhost:5000/api/order-menu-items
+Authorization: <your_token>
+
+//get order menu item by Id
+###
+GET http://localhost:5000/api/order-menu-items/1
+
+//create order menu item
+###
+POST http://localhost:5000/api/order-menu-items
+content-type: application/json
+
+{
+    "Order_Id": 1,
+    "Menu_Item_Id": 1,
+    "Quantity": 2,
+    "Item_Price": 500,
+    "Total_Price": 1000
+}
+
+//update order menu item
+###
+PUT http://localhost:5000/api/order-menu-items/1
+content-type: application/json
+
+{
+    "Order_Id": 1,
+    "Menu_Item_Id": 1,
+    "Quantity": 2,
+    "Item_Price": 500,
+    "Total_Price": 1000
+}
+
+//delete order menu item
+###
+DELETE http://localhost:5000/api/order-menu-items/1
