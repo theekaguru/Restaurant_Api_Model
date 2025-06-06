@@ -22,22 +22,25 @@ POST http://localhost:5000/api/auth/register
 content-type: application/json
 
 {
-    "fullName": "daniel",
-    "email":"daniel@gmail.com",
-    "password":"admin",
-    "userType": "admin"
+    "Full_Name":"daniel" , 
+    "Contact_Phone": 1020, 
+    "Phone_Verified": false,
+    "Email": "daniel@gmail.com",
+    "Email_verified": false,
+    "Confirmation_Code":"A1020" ,
+    "Password":"daniel 123",
+    "User_Type":"member"
     
 }
 
-
 //login a user
 ###
-POST http://localhost:5000/api/auth/login
+POST http://localhost:5000/api/login
 content-type: application/json
 
 { 
-    "email":"daniel@gmail.com",
-    "password":"admin"
+    "email":"Admin@gmail.com",
+    "password":"Admin123"
     
 }
 
@@ -49,9 +52,15 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImVtYWlsIjoi
 content-type: application/json
 
 {
-    "fullName": "ka guru",
-    "email":"kaguru@gmail.com",
-    "password":"ka guru"
+   "Full_Name" : "Kaguru" ,
+   "Contact_Phone" : 12345678 , 
+  "Phone_Verified": false ,
+   "Email" : "Kaguru@gmail.com" ,
+   "Email_verified" : false , 
+   "Confirmation_Code": "A123" ,
+   "Password" : "Kaguru",
+   "User_Type": "member"
+    
 }
 
 //delete user
@@ -81,9 +90,9 @@ content-type: application/json
 Authorization: 
 
 {
-    "stateName":"louis port",
-    "stateCode":"amiri port fuelaluope"
     
+    "State_Name": "Pumwani",
+    "Code": "Nairobi 254"
     
 }
 
@@ -93,8 +102,8 @@ PUT  http://localhost:5000/api/states/1
 content-type: application/json
 
 {
-    "stateName":"louis port",
-    "stateCode":"amiri port fuelaluope"
+    "State_Name": "Pumwani",
+    "Code": "Nairobi 254"
 }
 
 //delete user
@@ -124,10 +133,8 @@ POST http://localhost:5000/api/city
 content-type: application/json
 
 {
-    "cityName": "Denvar",
-    "stateId":"louis port",
-    
-    
+    "City_Name": "Nai",
+    "State_Id": 1  
 }
 
 //Update city
@@ -136,8 +143,8 @@ PUT  http://localhost:5000/api/city/1
 content-type: application/json
 
 {
-    "cityName": "Denvar",
-    "stateId":"moscow",
+    "City_Name": "Nai",
+    "State_Id": 1
 }
 
 //delete city

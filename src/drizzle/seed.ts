@@ -1,18 +1,5 @@
 import {
-  User_Table,
-  State_Table,
-  City_Table,
-  Address_Table,
-  Restaurant_Table,
-  Restaurant_Owner_Table,
-  Category_Table,
-  Menu_Item_Table,
-  Driver_Table,
-  Orders_Table,
-  Comment_Table,
-  Status_Catalog_Table,
-  Order_Status_Table,
-  Order_Menu_Item_Table,
+  User_Table , State_Table , City_Table , Address_Table , Restaurant_Table , Restaurant_Owner_Table , Category_Table, Menu_Item_Table , Driver_Table , Orders_Table , Comment_Table , Status_Catalog_Table , Order_Status_Table , Order_Menu_Item_Table,
 } from "./schema";
 import db from "./db";
 

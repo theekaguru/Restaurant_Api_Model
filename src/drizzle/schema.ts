@@ -13,14 +13,12 @@ function withTimestamps() {
   };
 }
 
-// USER_TABLE
+// USER_TABLE 1
 export const User_Table = pgTable("User_Table", {
   User_Id: serial("User_Id").primaryKey(),
   Full_Name: varchar("Full_Name", { length: 255 }),
   Contact_Phone: integer("Contact_Phone"),
-
-  Phone_Verified: boolean("Phone_Verified").default(false), // ✅ ADDED COLUMN
-
+  Phone_Verified: boolean("Phone_Verified").default(false), 
   Email: varchar("Email", { length: 255 }).notNull(),
   Email_verified: boolean("Email_Verified").default(false),
   Confirmation_Code: text("Confirmation_Code"),
@@ -30,7 +28,7 @@ export const User_Table = pgTable("User_Table", {
 });
 
 
-// STATE_TABLE
+// STATE_TABLE 2
 export const State_Table = pgTable("State_Table", {
   State_Id: serial("State_Id").primaryKey(),
   State_Name: text("State_Name"),
@@ -38,7 +36,7 @@ export const State_Table = pgTable("State_Table", {
   ...withTimestamps(),
 });
 
-// CITY_TABLE
+// CITY_TABLE 3
 export const City_Table = pgTable("City_Table", {
   City_Id: serial("City_Id").primaryKey(),
   City_Name: text("City_Name"),
@@ -46,7 +44,7 @@ export const City_Table = pgTable("City_Table", {
   ...withTimestamps(),
 });
 
-// RESTAURANT_TABLE
+// RESTAURANT_TABLE 4
 export const Restaurant_Table = pgTable("Restaurant_Table", {
   Restaurant_Id: serial("Restaurant_Id").primaryKey(),
   Restaurant_Name: text("Restaurant_Name"),
@@ -56,7 +54,7 @@ export const Restaurant_Table = pgTable("Restaurant_Table", {
   ...withTimestamps(),
 });
 
-// RESTAURANT_OWNER_TABLE
+// RESTAURANT_OWNER_TABLE 5
 export const Restaurant_Owner_Table = pgTable("Restaurant_Owner_Table", {
   Restaurant_Owner_Id: serial("Restaurant_Owner_Id").primaryKey(),
   Restaurant_Id: integer("Restaurant_Id").references(() => Restaurant_Table.Restaurant_Id),
@@ -64,14 +62,14 @@ export const Restaurant_Owner_Table = pgTable("Restaurant_Owner_Table", {
   ...withTimestamps(),
 });
 
-// CATEGORY_TABLE
+// CATEGORY_TABLE 6
 export const Category_Table = pgTable("Category_Table", {
   Category_Id: serial("Category_Id").primaryKey(),
   Category_Name: text("Category_Name"),
   ...withTimestamps(),
 });
 
-// MENU_ITEM_TABLE
+// MENU_ITEM_TABLE 7
 export const Menu_Item_Table = pgTable("Menu_Item_Table", {
   Menu_Item_Id: serial("Menu_Item_Id").primaryKey(),
   Menu_Name: text("Menu_Name").notNull(),
@@ -84,7 +82,7 @@ export const Menu_Item_Table = pgTable("Menu_Item_Table", {
   ...withTimestamps(),
 });
 
-// DRIVER_TABLE
+// DRIVER_TABLE 8
 export const Driver_Table = pgTable("Driver_Table", {
   Driver_Id: serial("Driver_Id").primaryKey(),
   Car_Make: text("Car_Make"),
@@ -96,7 +94,7 @@ export const Driver_Table = pgTable("Driver_Table", {
   ...withTimestamps(),
 });
 
-// ADDRESS_TABLE
+// ADDRESS_TABLE 9
 export const Address_Table = pgTable("Address_Table", {
   Address_Id: serial("Address_Id").primaryKey(),
   Street_Address_1: text("Street_Address_1"),
@@ -108,7 +106,7 @@ export const Address_Table = pgTable("Address_Table", {
   ...withTimestamps(),
 });
 
-// ORDERS_TABLE
+// ORDERS_TABLE 10
 export const Orders_Table = pgTable("Orders_Table", {
   Orders_Id: serial("Orders_Id").primaryKey(),
   Restaurant_Id: integer("Restaurant_Id").references(() => Restaurant_Table.Restaurant_Id),
@@ -124,7 +122,7 @@ export const Orders_Table = pgTable("Orders_Table", {
   ...withTimestamps(),
 });
 
-// ORDER_MENU_ITEM_TABLE
+// ORDER_MENU_ITEM_TABLE 11
 export const Order_Menu_Item_Table = pgTable("Order_Menu_Item_Table", {
   Order_Menu_Item_Id: serial("Order_Menu_Item_Id").primaryKey(),
   menu_Order_Id: integer("Order_Id").references(() => Orders_Table.Orders_Id),
@@ -136,7 +134,7 @@ export const Order_Menu_Item_Table = pgTable("Order_Menu_Item_Table", {
   ...withTimestamps(),
 });
 
-// COMMENT_TABLE
+// COMMENT_TABLE 12
 export const Comment_Table = pgTable("Comment_Table", {
   Comment_Id: serial("Comment_Id").primaryKey(),
   Order_Id: integer("Order_Id").references(() => Orders_Table.Orders_Id),
@@ -147,14 +145,14 @@ export const Comment_Table = pgTable("Comment_Table", {
   ...withTimestamps(),
 });
 
-// STATUS_CATALOG_TABLE
+// STATUS_CATALOG_TABLE 13
 export const Status_Catalog_Table = pgTable("Status_Catalog_Table", {
   Status_Catalog_Id: serial("Status_Catalog_Id").primaryKey(),
   Status_Catalog_Name: text("Status_Catalog_Name"),
   ...withTimestamps(),
 });
 
-// ORDER_STATUS_TABLE
+// ORDER_STATUS_TABLE 14
 export const Order_Status_Table = pgTable("Order_Status_Table", {
   Order_Status_Id: serial("Order_Status_Id").primaryKey(),
   Order_Id: integer("Order_Id").references(() => Orders_Table.Orders_Id),
@@ -162,7 +160,8 @@ export const Order_Status_Table = pgTable("Order_Status_Table", {
   ...withTimestamps(),
 });
 
-// ========== RELATIONSHIPS ==========
+//                      ========== RELATIONSHIPS ==========
+
 
 export const User_Relations = relations(User_Table, ({ many, one }) => ({
   addresses: many(Address_Table),
@@ -299,11 +298,19 @@ export const Status_Catalog_Relations = relations(Status_Catalog_Table, ({ many 
   orderStatuses: many(Order_Status_Table),
 }));
 
-
+//                   ==================Inferences===========================
 
 // USERSTABLE 1
 export type TUser_TableInsert = typeof User_Table.$inferInsert;
 export type TUser_TableSelect = typeof User_Table.$inferSelect;
+
+// STATE_TABLE 2
+export type TState_TableInsert = typeof State_Table.$inferInsert;
+export type TState_TableSelect = typeof State_Table.$inferSelect;
+
+// CITY_TABLE 3
+export type TCity_TableInsert = typeof City_Table.$inferInsert;
+export type TCity_TableSelect = typeof City_Table.$inferSelect;
 
 // RESTAURANT_TABLE 2
 export type TRestaurant_TableInsert = typeof Restaurant_Table.$inferInsert;
@@ -340,14 +347,6 @@ export type TDriver_TableSelect = typeof Driver_Table.$inferSelect;
 // ADDRESS_TABLE 10
 export type TAddress_TableInsert = typeof Address_Table.$inferInsert;
 export type TAddress_TableSelect = typeof Address_Table.$inferSelect;
-
-// CITY_TABLE 11
-export type TCity_TableInsert = typeof City_Table.$inferInsert;
-export type TCity_TableSelect = typeof City_Table.$inferSelect;
-
-// STATE_TABLE 12
-export type TState_TableInsert = typeof State_Table.$inferInsert;
-export type TState_TableSelect = typeof State_Table.$inferSelect;
 
 // STATUS_CATALOG_TABLE 13
 export type TStatus_Catalog_TableInsert = typeof Status_Catalog_Table.$inferInsert;

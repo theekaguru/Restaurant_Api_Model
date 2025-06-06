@@ -8,7 +8,7 @@ export const userRouter = Router();
 
 
 // Get all users
-userRouter.get('/users',adminRoleAuth, getUsers);
+userRouter.get('/users',/*adminRoleAuth ,*/ getUsers);
 
 // Get user by ID
 userRouter.get('/users/:id', getUserById);
@@ -17,10 +17,7 @@ userRouter.get('/users/:id', getUserById);
 userRouter.post('/users', createUser);
 
 // Update an existing user
-userRouter.put('/users/:id' , bothRoleAuth, updateUser);
-
-// Update an existing user with partial fields
-// userRouter.patch('/users/:id', updateUserPartial);
+userRouter.put('/users/:id' ,/* bothRoleAuth ,*/updateUser);
 
 // Delete an existing user
-userRouter.delete('/users/:id',adminRoleAuth , deleteUser);
+userRouter.delete('/users/:id',/* adminRoleAuth ,*/ deleteUser);

@@ -8,17 +8,16 @@ export const stateRouter = Router();
 
 
 // Get all users
-stateRouter.get('/states', adminRoleAuth , getStates);
+stateRouter.get('/states', /*adminRoleAuth */  getStates);
 
 // Get user by ID
-stateRouter.get('/states/:id', adminRoleAuth , getStateById);
+stateRouter.get('/states/:id',/* adminRoleAuth ,*/  getStateById);
 
 // Create a new user
-stateRouter.post('/states', adminRoleAuth , createState);
+stateRouter.post('/states', /*adminRoleAuth ,*/  createState);
 
 // Update an existing user
-stateRouter.put('/states/:id', adminRoleAuth , updateState);
-
+stateRouter.put('/states/:id',/* adminRoleAuth, */ updateState);
 
 // Delete an existing user
-stateRouter.delete('/states/:id', adminRoleAuth, deleteState);
+stateRouter.delete('/states/:id', /*adminRoleAuth ,*/ deleteState);
