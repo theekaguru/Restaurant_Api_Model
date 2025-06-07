@@ -18,7 +18,7 @@ GET http://localhost:5000/api/users/1
 
 //register a user
 ###
-POST http://localhost:5000/api/users
+POST http://localhost:5000/api/localhost:5000/api/auth/register
 content-type: application/json
 
 {
@@ -283,42 +283,285 @@ content-type: application/json
 DELETE http://localhost:5000/api/addresses/1
 
 
-//.......................................................orders_menu_items...............................................................//
+//.......................................................orders...............................................................//
+
+//get all orders
+###
+GET http://localhost:5000/api/orders
+Authorization: <your_token>
+
+//get order by Id
+###
+GET http://localhost:5000/api/orders/1
+
+//create order
+###
+POST http://localhost:5000/api/orders
+content-type: application/json
+
+{
+    "Restaurant_Id": 1,
+    "Estimated_Delivery_Time": "2023-09-15T12:00:00Z",
+    "Actual_Delivery_Time": "2023-09-15T12:30:00Z",
+    "Delivery_Address_Id": 1,
+    "User_Id": 1,
+    "Driver_Id": 1,
+    "Price": 500,
+    "Discount": 50,
+    "Final_Price": 450,
+    "Comment": "Please deliver quickly."
+}
+
+//update order
+###
+PUT http://localhost:5000/api/orders/1
+content-type: application/json
+
+{
+    "Restaurant_Id": 1,
+    "Estimated_Delivery_Time": "2023-09-15T12:00:00Z",
+    "Actual_Delivery_Time": "2023-09-15T12:30:00Z",
+    "Delivery_Address_Id": 1,
+    "User_Id": 1,
+    "Driver_Id": 1,
+    "Price": 500,
+    "Discount": 50,
+    "Final_Price": 450,
+    "Comment": "Please deliver quickly."
+}
+
+//delete order
+###
+DELETE http://localhost:5000/api/orders/1
+
+//.......................................................order_menu...............................................................//
+
 //get all order menu items
 ###
-GET http://localhost:5000/api/order-menu-items
+GET http://localhost:5000/api/order_menu
 Authorization: <your_token>
 
 //get order menu item by Id
 ###
-GET http://localhost:5000/api/order-menu-items/1
+GET http://localhost:5000/api/order_menu/1
 
 //create order menu item
 ###
-POST http://localhost:5000/api/order-menu-items
+POST http://localhost:5000/api/order_menu
 content-type: application/json
 
 {
     "Order_Id": 1,
     "Menu_Item_Id": 1,
     "Quantity": 2,
-    "Item_Price": 500,
-    "Total_Price": 1000
+    "Price": 1000
 }
 
 //update order menu item
 ###
-PUT http://localhost:5000/api/order-menu-items/1
+PUT http://localhost:5000/api/order_menu/1
 content-type: application/json
 
 {
     "Order_Id": 1,
     "Menu_Item_Id": 1,
     "Quantity": 2,
-    "Item_Price": 500,
-    "Total_Price": 1000
+    "Price": 1000
 }
 
 //delete order menu item
 ###
-DELETE http://localhost:5000/api/order-menu-items/1
+DELETE http://localhost:5000/api/order_menu/1
+
+//.......................................................order_status...............................................................//
+
+//get all order statuses
+###
+GET http://localhost:5000/api/order_status
+Authorization: <your_token>
+
+//get order status by Id
+###
+GET http://localhost:5000/api/order_status/1
+
+//create order status
+###
+POST http://localhost:5000/api/order_status
+content-type: application/json
+
+{
+    "Order_Id": 1,
+    "Status_Catalog_Id": 1
+}
+
+//update order status
+###
+PUT http://localhost:5000/api/order_status/1
+content-type: application/json
+
+{
+    "Order_Id": 1,
+    "Status_Catalog_Id": 1
+}
+
+//delete order status
+###
+DELETE http://localhost:5000/api/order_status/1
+
+//.......................................................orders...............................................................//
+
+//get all orders
+###
+GET http://localhost:5000/api/orders
+Authorization: <your_token>
+
+//get order by Id
+###
+GET http://localhost:5000/api/orders/1
+
+//create order
+###
+POST http://localhost:5000/api/orders
+content-type: application/json
+
+{
+    "Restaurant_Id": 1,
+    "Estimated_Delivery_Time": "2023-09-15T12:00:00Z",
+    "Actual_Delivery_Time": "2023-09-15T12:30:00Z",
+    "Delivery_Address_Id": 1,
+    "User_Id": 1,
+    "Driver_Id": 1,
+    "Price": 500,
+    "Discount": 50,
+    "Final_Price": 450,
+    "Comment": "Please deliver quickly."
+}
+
+//update order
+###
+PUT http://localhost:5000/api/orders/1
+content-type: application/json
+
+{
+    "Restaurant_Id": 1,
+    "Estimated_Delivery_Time": "2023-09-15T12:00:00Z",
+    "Actual_Delivery_Time": "2023-09-15T12:30:00Z",
+    "Delivery_Address_Id": 1,
+    "User_Id": 1,
+    "Driver_Id": 1,
+    "Price": 500,
+    "Discount": 50,
+    "Final_Price": 450,
+    "Comment": "Please deliver quickly."
+}
+
+//delete order
+###
+DELETE http://localhost:5000/api/orders/1
+
+//......................................................./RestaurantOwner...............................................................//
+
+//get all status 
+###
+GET http://localhost:5000/api//RestaurantOwner
+Authorization: <your_token>
+
+//get status catalog by Id
+###
+GET http://localhost:5000/api//RestaurantOwner/1
+
+//create status catalog
+###
+POST http://localhost:5000/api//RestaurantOwner
+content-type: application/json
+
+{
+    "Name": "In Progress"
+}
+
+//update status catalog
+###
+PUT http://localhost:5000/api//RestaurantOwner/1
+content-type: application/json
+
+{
+    "Name": "Completed"
+}
+
+//delete status catalog
+###
+DELETE http://localhost:5000/api//RestaurantOwner/1
+
+//.......................................................comment...............................................................//
+
+//get all comments
+###
+GET http://localhost:5000/api/comments
+Authorization: <your_token>
+
+//get comment by Id
+###
+GET http://localhost:5000/api/comments/1
+
+//create comment
+###
+POST http://localhost:5000/api/comments
+content-type: application/json
+
+{
+    "Order_Id": 1,
+    "User_Id": 1,
+    "Content": "Great service!"
+}
+
+//update comment
+###
+PUT http://localhost:5000/api/comments/1
+content-type: application/json
+
+{
+    "Order_Id": 1,
+    "User_Id": 1,
+    "Content": "Excellent service!"
+}
+
+//delete comment
+###
+DELETE http://localhost:5000/api/comments/1
+
+
+//......................................................./RestaurantOwner...............................................................//
+
+//get all Restaurant Owners 
+###
+GET http://localhost:5000/api/RestaurantOwner
+Authorization: <your_token>
+
+//get Restaurant Owners  by Id
+###
+GET http://localhost:5000/api/RestaurantOwner/1
+
+//create Restaurant Owners 
+###
+POST http://localhost:5000/api/RestaurantOwner
+content-type: application/json
+
+{
+    "Restaurant_Id":1,
+    "Owner_Id":2
+
+}
+
+//update Restaurant Owners 
+###
+PUT http://localhost:5000/api/RestaurantOwner/1
+content-type: application/json
+
+{
+    "Restaurant_Id":1,
+    "Owner_Id":2
+}
+
+//delete Restaurant Owners catalog
+###
+DELETE http://localhost:5000/api/RestaurantOwner/1

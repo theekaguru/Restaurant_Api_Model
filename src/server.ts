@@ -5,6 +5,16 @@ import { userRouter } from './users/user.routes';
 import { stateRouter } from './state/state.route';
 import { cityRouter } from './city/city.route';
 import { authRouter } from './auth/auth.route';
+import { driverRouter } from './driver/driver.route';
+import { menuItemRouter } from './menu_item/menu_item.routes';
+import { addressRouter } from './address/address.route';
+import { orderRouter } from './orders/orders.route';
+import { orderMenuRouter } from './order_menu/order_menu.route';
+import { statusCatalogRouter } from './status_catalog/status_catalog.router';
+import { commentRouter } from './comment/comment.route';
+import { categoryRouter } from './category/category.route';
+import { orderStatusRouter } from './order_status/order_status.route';
+import { restaurantownerRouter } from './restaurant_owner/restaurant_owner.route';
 
 dotenv.config();
 
@@ -23,10 +33,24 @@ app.get('/', (req, res:Response) => {
 });
 
 // Importing user routes
-app.use('/api',userRouter)
-app.use('/api',stateRouter)
-app.use('/api',cityRouter)
 app.use('/api',authRouter)
+
+app.use('/api',addressRouter) //1
+app.use('/api' ,categoryRouter) //2
+app.use('/api',cityRouter) //3
+app.use('/api' , commentRouter ) //4
+app.use('/api', driverRouter) //5
+app.use('/api',menuItemRouter)//6
+app.use('/api' , orderMenuRouter) //7
+app.use('/api' ,orderStatusRouter) //8
+app.use('/api' ,orderRouter) //9
+app.use('/api' ,restaurantownerRouter) //10
+app.use('/api',stateRouter)// 11
+app.use('/api' , statusCatalogRouter) //12
+app.use('/api',userRouter) //13
+app.use('/api' ,commentRouter) //14
+
+
 
 const PORT = process.env.PORT || 5000;
 

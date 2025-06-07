@@ -312,35 +312,35 @@ export type TState_TableSelect = typeof State_Table.$inferSelect;
 export type TCity_TableInsert = typeof City_Table.$inferInsert;
 export type TCity_TableSelect = typeof City_Table.$inferSelect;
 
-// RESTAURANT_TABLE 2
+// RESTAURANT_TABLE 4
 export type TRestaurant_TableInsert = typeof Restaurant_Table.$inferInsert;
 export type TRestaurant_TableSelect = typeof Restaurant_Table.$inferSelect;
 
-// RESTAURANT_OWNER_TABLE 3
+// RESTAURANT_OWNER_TABLE 5
 export type TRestaurant_Owner_TableInsert = typeof Restaurant_Owner_Table.$inferInsert;
 export type TRestaurant_Owner_TableSelect = typeof Restaurant_Owner_Table.$inferSelect;
 
-// CATEGORY_TABLE 4
+// CATEGORY_TABLE 6
 export type TCategory_TableInsert = typeof Category_Table.$inferInsert;
 export type TCategory_TableSelect = typeof Category_Table.$inferSelect;
 
-// MENU_ITEM_TABLE 5
+// MENU_ITEM_TABLE 7
 export type TMenu_Item_TableInsert = typeof Menu_Item_Table.$inferInsert;
 export type TMenu_Item_TableSelect = typeof Menu_Item_Table.$inferSelect;
 
-// ORDERS_TABLE 6
+// ORDERS_TABLE 8
 export type TOrders_TableInsert = typeof Orders_Table.$inferInsert;
 export type TOrders_TableSelect = typeof Orders_Table.$inferSelect;
 
-// ORDER_MENU_ITEM_TABLE 7
+// ORDER_MENU_ITEM_TABLE 9
 export type TOrder_Menu_Item_TableInsert = typeof Order_Menu_Item_Table.$inferInsert;
 export type TOrder_Menu_Item_TableSelect = typeof Order_Menu_Item_Table.$inferSelect;
 
-// COMMENT_TABLE 8
+// COMMENT_TABLE 10
 export type TComment_TableInsert = typeof Comment_Table.$inferInsert;
 export type TComment_TableSelect = typeof Comment_Table.$inferSelect;
 
-// DRIVER_TABLE 9
+// DRIVER_TABLE 11
 export type TDriver_TableInsert = typeof Driver_Table.$inferInsert;
 export type TDriver_TableSelect = typeof Driver_Table.$inferSelect;
 

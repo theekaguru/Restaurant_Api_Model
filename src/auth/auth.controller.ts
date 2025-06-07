@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt"
-import { createUserServices, getUserByEmailService } from "./auth.service";
+import {createUserServices } from "./auth.service";
 import { error } from "console";
 import jwt from "jsonwebtoken"
 
@@ -9,18 +9,26 @@ import jwt from "jsonwebtoken"
 export const createUser =async (req:Request, res:Response) =>{
 
     try {
-         const user  = req.body;
-    if (!user.fullName || !user.email || !user.password) {
-        res.status(400).json({ error: "All fields are required" });
-        return; // Prevent further execution
+        const { Full_Name , Contact_Phone , Phone_Verified , Email ,Email_verified , Confirmation_Code , Password} = req.body;
+    if (!Full_Name || !Contact_Phone || !Phone_Verified || !Email || !Email_verified || !Confirmation_Code || !Password ) {
+        res.status(400).json({ error: "All fields 🖇️ are required" });
+        return;
     }
-
 
     //generate hashed password
     const salt = bcrypt.genSaltSync(10);
-     const hashedPassword = bcrypt.hashSync(user.password,salt)
-    user.password = hashedPassword
+     const hashedPassword = bcrypt.hashSync(Password,salt)
+       console.log("🚀 ~ createdUser ~ hashedPassword:" , hashedPassword)
 
+     } catch (error) {
+
+     }
+    
+}
+
+
+    /*
+    user.password = hashedPassword
      const newUser = await createUserServices(user)
      res.status(201).json({message:newUser})
 
@@ -79,3 +87,5 @@ export const loginUser =async(req:Request , res:Response) =>{
 
 
     }  
+
+    */

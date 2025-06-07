@@ -1,4 +1,3 @@
-
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
 import { State_Table , TState_TableInsert ,TState_TableSelect} from "../drizzle/schema";
