@@ -110,16 +110,15 @@ export const Address_Table = pgTable("Address_Table", {
 export const Orders_Table = pgTable("Orders_Table", {
   Orders_Id: serial("Orders_Id").primaryKey(),
   Restaurant_Id: integer("Restaurant_Id").references(() => Restaurant_Table.Restaurant_Id),
-  Estimated_Delivery_Time: timestamp("Estimated_Delivery_Time"),
-  Actual_Delivery_Time: timestamp("Actual_Delivery_Time"),
+  Estimated_Delivery_Time: text("Estimated_Delivery_Time"),
+  Actual_Delivery_Time: text("Actual_Delivery_Time"),
   Delivery_Address_Id: integer("Delivery_Address_Id").references(() => Address_Table.Address_Id),
   User_Id: integer("User_Id").references(() => User_Table.User_Id),
   Driver_Id: integer("Driver_Id").references(() => Driver_Table.Driver_Id),
   Price: decimal("Price"),
   Discount: decimal("Discount"),
   Final_Price: decimal("Final_Price"),
-  Comment: text("Comment"),
-  ...withTimestamps(),
+  Comment: text("Comment")
 });
 
 // ORDER_MENU_ITEM_TABLE 11

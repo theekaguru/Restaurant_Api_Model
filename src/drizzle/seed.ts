@@ -90,8 +90,8 @@ async function seed() {
   // ORDER_TABLE
  const [Burger] = await db.insert(Orders_Table).values({
   Restaurant_Id: LC_MARIOT.Restaurant_Id,
-  Estimated_Delivery_Time: new Date(Date.now() + 20 * 60000), // 20 minutes from now
-  Actual_Delivery_Time: new Date(Date.now() + 30 * 60000),    // 30 minutes from now
+  Estimated_Delivery_Time: "today 11:30am",
+  Actual_Delivery_Time: "idi mubarak ",  
   Delivery_Address_Id: LA_Lakers.Address_Id,
   User_Id: Ascar.User_Id,
   Driver_Id: Kyla.Driver_Id,
@@ -103,11 +103,11 @@ async function seed() {
 
   // ORDER MENU ITEM
   const [Drinks] = await db.insert(Order_Menu_Item_Table).values({
-  menu_Order_Id: Burger.Orders_Id,      // <-- correct field name
+  menu_Order_Id: Burger.Orders_Id,      
   Menu_Item_Id: SPICY.Menu_Item_Id,
   Quantity: 2,
-  Item_Price: "100.0",                  // <-- string for decimal
-  Price: "150.0",                       // <-- string for decimal
+  Item_Price: "100.0",                 
+  Price: "150.0",                      
   Comment: "Yummy",
 }).returning();
 

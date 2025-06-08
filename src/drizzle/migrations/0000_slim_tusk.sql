@@ -85,17 +85,15 @@ CREATE TABLE "Order_Status_Table" (
 CREATE TABLE "Orders_Table" (
 	"Orders_Id" serial PRIMARY KEY NOT NULL,
 	"Restaurant_Id" integer,
-	"Estimated_Delivery_Time" timestamp,
-	"Actual_Delivery_Time" timestamp,
+	"Estimated_Delivery_Time" text,
+	"Actual_Delivery_Time" text,
 	"Delivery_Address_Id" integer,
 	"User_Id" integer,
 	"Driver_Id" integer,
 	"Price" numeric,
 	"Discount" numeric,
 	"Final_Price" numeric,
-	"Comment" text,
-	"Created_At" timestamp DEFAULT now(),
-	"Updated_At" timestamp DEFAULT now()
+	"Comment" text
 );
 --> statement-breakpoint
 CREATE TABLE "Restaurant_Owner_Table" (

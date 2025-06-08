@@ -20,15 +20,3 @@ orderMenuRouter.put('/order-menu-items/:id',/* adminRoleAuth, */ updateOrderMenu
 
 // Delete an existing Order Menu Item
 orderMenuRouter.delete('/order-menu-items/:id', /*adminRoleAuth ,*/ deleteOrderMenuItem);
-
-// Get Order Menu Item by ID
-orderMenuRouter.get('/order-menu-items/:id',/* adminRoleAuth ,*/  getOrderMenuItemById);
-
-// Create a new Order Menu Item
-orderMenuRouter.post('/order-menu-items', /*adminRoleAuth ,*/  createOrderMenuItem);
-
-// Update an existing Order Menu Item
-orderMenuRouter.put('/order-menu-items/:id',/* adminRoleAuth, */ updateOrderMenuItem);
-
-// Delete an existing Order Menu Item
-orderMenuRouter.delete('/order-menu-items/:id', /*adminRoleAuth ,*/ deleteOrderMenuItem);

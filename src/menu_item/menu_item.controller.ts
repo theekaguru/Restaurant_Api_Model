@@ -6,7 +6,7 @@ import { getMenu_ItemByIdServices , getMenu_ItemServices , createMenu_ItemServic
 //create menu item
 export const createMenuItem = async (req: Request, res: Response) => {
     const {Menu_Name , Restaurant_Id , Category_Id , Description  , Ingredients , Price , Active } = req.body;
-    if (!Menu_Name || !Restaurant_Id || !Category_Id || !Description  || !Ingredients || !Price || Active) {
+    if (!Menu_Name || !Restaurant_Id || !Category_Id || !Description  || !Ingredients || !Price || !Active) {
         res.status(400).json({ error: "All fields ⛓️‍💥 are required" });
         return; 
     }

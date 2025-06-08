@@ -7,7 +7,7 @@ import { createUserServices, deleteUserServices, getUserByIdServices, getUsersSe
 //create user
 export const createUser = async (req: Request, res: Response) => {
     const { Full_Name , Contact_Phone , Phone_Verified , Email ,Email_verified , Confirmation_Code , Password} = req.body;
-    if (!Full_Name || !Contact_Phone || !Phone_Verified || !Email || !Email_verified || !Confirmation_Code || !Password ) {
+    if (!Full_Name || !Contact_Phone  || !Email  || !Confirmation_Code || !Password ) {
         res.status(400).json({ error: "All fields 🖇️ are required" });
         return;
     }
@@ -65,7 +65,7 @@ export const updateUser = async (req: Request, res: Response) => {
         return; 
     }
     const { Full_Name , Contact_Phone , Phone_Verified , Email ,Email_verified , Confirmation_Code , Password} = req.body;
-    if (!Full_Name || !Contact_Phone || !Phone_Verified || !Email || !Email_verified || !Confirmation_Code || !Password ) {
+    if (!Full_Name || !Contact_Phone  || !Email || !Confirmation_Code || !Password ) {
         res.status(400).json({ error: "All fields are required" });
         return; 
     }

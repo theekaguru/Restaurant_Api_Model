@@ -5,13 +5,13 @@ import { getAddressesServices, getAddressByIdServices, createAddressServices, up
 
 //create address
 export const createAddress = async (req: Request, res: Response) => {
-    const { Address_Id , Street_Address_1 , Street_Address_2 , Zip_Code , Delivery_Instructions , User_Id ,City_Id} = req.body;
-    if (!Address_Id || !Street_Address_1 || !Zip_Code || !User_Id || !City_Id) {
+    const { Street_Address_1 , Street_Address_2 , Zip_Code , Delivery_Instructions , User_Id ,City_Id } = req.body;
+    if (!Street_Address_1  ||!Street_Address_2 || !Zip_Code || !Delivery_Instructions ||!User_Id || !City_Id) {
         res.status(400).json({ error: "All fields ⛓️‍💥 are required" });
         return; 
     }
     try {
-        const newAddress = await createAddressServices({ Address_Id , Street_Address_1 , Street_Address_2 , Zip_Code , Delivery_Instructions , User_Id ,City_Id });
+        const newAddress = await createAddressServices({ Street_Address_1 , Street_Address_2 , Zip_Code , Delivery_Instructions , User_Id ,City_Id });
         if (newAddress == null) {
             res.status(500).json({ message: "Failed 🙆‍♂️ to create Address 🏠" });
         } else {

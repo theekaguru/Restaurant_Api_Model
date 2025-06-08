@@ -1,5 +1,5 @@
 {
-  "id": "47019b39-dee1-4fd0-a228-ccfc9ce35e98",
+  "id": "4d591608-7b2b-4de6-abbb-f91013b4c31c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -662,13 +662,13 @@
         },
         "Estimated_Delivery_Time": {
           "name": "Estimated_Delivery_Time",
-          "type": "timestamp",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
         "Actual_Delivery_Time": {
           "name": "Actual_Delivery_Time",
-          "type": "timestamp",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -713,20 +713,6 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
-        },
-        "Created_At": {
-          "name": "Created_At",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
-        },
-        "Updated_At": {
-          "name": "Updated_At",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
         }
       },
       "indexes": {},

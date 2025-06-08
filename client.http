@@ -18,18 +18,16 @@ GET http://localhost:5000/api/users/1
 
 //register a user
 ###
-POST http://localhost:5000/api/localhost:5000/api/auth/register
+POST http://localhost:5000/api/users
 content-type: application/json
 
 {
     "Full_Name": "daniel",
     "Contact_Phone": 1020,
-    "Phone_Verified": false,
     "Email": "daniel@gmail.com",
-    "Email_verified": false,
     "Confirmation_Code": "A1020",
     "Password": "daniel123",
-    "User_Type": "member"
+    "User_Type": "admin"
 }
 
 //login a user
@@ -51,14 +49,12 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImVtYWlsIjoi
 content-type: application/json
 
 {
-   "Full_Name" : "Kaguru" ,
-   "Contact_Phone" : 12345678 , 
-  "Phone_Verified": false ,
-   "Email" : "Kaguru@gmail.com" ,
-   "Email_verified" : false , 
-   "Confirmation_Code": "A123" ,
-   "Password" : "Kaguru",
-   "User_Type": "member"
+    "Full_Name": "kaguru",
+    "Contact_Phone": 1020,
+    "Email": "kaguru@gmail.com",
+    "Confirmation_Code": "A1020",
+    "Password": "daniel123",
+    "User_Type": "member"
     
 }
 
@@ -168,12 +164,12 @@ POST http://localhost:5000/api/menu_items
 content-type: application/json
 
 {
-   "Menu_Item_Name": "Pizza",
+   "Menu_Name": "Pizza",
    "Restaurant_Id": 1,
-   "Category_Id": 500,
+   "Category_Id": 1,
    "Description": "pizza.jpg",
-   "Ingredients": 1,
-   "Price": 500,
+   "Ingredients": "hoho",
+   "Price": 50.50,
    "Active": true
 }
 
@@ -183,13 +179,13 @@ PUT http://localhost:5000/api/menu_items/1
 content-type: application/json
 
 {
-    "Menu_Item_Name": "Pizza",
-    "Restaurant_Id": 1,
-    "Category_Id": 500,
-    "Description": "pizza.jpg",
-    "Ingredients": 1,
-    "Price": 500,
-    "Active": true
+   "Menu_Name": "Pizza",
+   "Restaurant_Id": 1,
+   "Category_Id": 1,
+   "Description": "pizza.jpg",
+   "Ingredients": "hoho",
+   "Price": 50.50,
+   "Active": true
 }
 
 //delete menu item
@@ -205,7 +201,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoi
 
 //get driver by Id
 ###
-GET http://localhost:5000/api/drivers/1
+GET http://localhost:5000/api/drivers/3
 
 //create driver
 ###
@@ -213,8 +209,8 @@ POST http://localhost:5000/api/drivers
 content-type: application/json
 
 {
-    "Car_Make": "Toyota",
-    "Car_Model": "Corolla",
+    "Car_Make": "Volvo",
+    "Car_Model": "V40",
     "Car_Year": 2020,
     "User_Id": 1,
     "Online": true,
@@ -227,8 +223,8 @@ PUT  http://localhost:5000/api/drivers/1
 content-type: application/json
 
 {
-    "Car_Make": "Toyota",
-    "Car_Model": "Corolla",
+    "Car_Make": "Tx",
+    "Car_Model": "Toyota",
     "Car_Year": 2020,
     "User_Id": 1,
     "Online": true,
@@ -256,12 +252,13 @@ POST http://localhost:5000/api/addresses
 content-type: application/json
 
 {
-    "Street_Address_1": "123 Main St",
-    "Street_Address_2": "Apt 4B",
-    "Zip_Code": "10001",
-    "Delivery_Instructions": "Leave at front door",
-    "User_Id": 1,
-    "City_Id": 1
+
+    "Street_Address_1": "downtown123",
+    "Street_Address_2":"Mumbai254" ,
+    "Zip_Code": "ewDelhi120",
+    "Delivery_Instructions":"get on time" ,
+    "User_Id": 2,
+    "City_Id": 2
 }
 
 //Update address
@@ -274,8 +271,8 @@ content-type: application/json
     "Street_Address_2": "Apt 4B",
     "Zip_Code": "10001",
     "Delivery_Instructions": "Leave at front door",
-    "User_Id": 1,
-    "City_Id": 1
+    "User_Id": 3,
+    "City_Id": 4
 }
 
 //delete address
@@ -310,6 +307,7 @@ content-type: application/json
     "Discount": 50,
     "Final_Price": 450,
     "Comment": "Please deliver quickly."
+   
 }
 
 //update order
@@ -338,55 +336,59 @@ DELETE http://localhost:5000/api/orders/1
 
 //get all order menu items
 ###
-GET http://localhost:5000/api/order_menu
+GET http://localhost:5000/api/order-menu-items
 Authorization: <your_token>
 
 //get order menu item by Id
 ###
-GET http://localhost:5000/api/order_menu/1
+GET http://localhost:5000/api/order-menu-items/4
 
 //create order menu item
 ###
-POST http://localhost:5000/api/order_menu
+POST http://localhost:5000/api/order-menu-items
 content-type: application/json
 
 {
-    "Order_Id": 1,
-    "Menu_Item_Id": 1,
+    "menu_Order_Id": 1,
+    "Menu_Item_Id": 2,
     "Quantity": 2,
-    "Price": 1000
+    "Item_Price":20.50,
+    "Price": 1000,
+    "Comment":"work hard"
 }
 
 //update order menu item
 ###
-PUT http://localhost:5000/api/order_menu/1
+PUT http://localhost:5000/api/order-menu-items/1
 content-type: application/json
 
 {
-    "Order_Id": 1,
-    "Menu_Item_Id": 1,
+    "menu_Order_Id": 1,
+    "Menu_Item_Id": 2,
     "Quantity": 2,
-    "Price": 1000
+    "Item_Price":20.50,
+    "Price": 1000,
+    "Comment":"work hard"
 }
 
 //delete order menu item
 ###
-DELETE http://localhost:5000/api/order_menu/1
+DELETE http://localhost:5000/api/order-menu-items/1
 
 //.......................................................order_status...............................................................//
 
 //get all order statuses
 ###
-GET http://localhost:5000/api/order_status
+GET http://localhost:5000/api/order-statuses
 Authorization: <your_token>
 
 //get order status by Id
 ###
-GET http://localhost:5000/api/order_status/1
+GET http://localhost:5000/api/order-statuses/1
 
 //create order status
 ###
-POST http://localhost:5000/api/order_status
+POST http://localhost:5000/api/order-statuses
 content-type: application/json
 
 {
@@ -396,7 +398,7 @@ content-type: application/json
 
 //update order status
 ###
-PUT http://localhost:5000/api/order_status/1
+PUT http://localhost:5000/api/order-statuses/1
 content-type: application/json
 
 {
@@ -406,7 +408,7 @@ content-type: application/json
 
 //delete order status
 ###
-DELETE http://localhost:5000/api/order_status/1
+DELETE http://localhost:5000/api/order-statuses/1
 
 //.......................................................orders...............................................................//
 
@@ -425,16 +427,16 @@ POST http://localhost:5000/api/orders
 content-type: application/json
 
 {
-    "Restaurant_Id": 1,
-    "Estimated_Delivery_Time": "2023-09-15T12:00:00Z",
-    "Actual_Delivery_Time": "2023-09-15T12:30:00Z",
+    "Restaurant_Id": 2,
+    "Estimated_Delivery_Time": "2025-06-07T21:43:30.951Z",
+    "Actual_Delivery_Time": "2025-06-07T21:43:30.951Z",
     "Delivery_Address_Id": 1,
     "User_Id": 1,
     "Driver_Id": 1,
-    "Price": 500,
-    "Discount": 50,
-    "Final_Price": 450,
-    "Comment": "Please deliver quickly."
+    "Price": "500.00",
+    "Discount": "50.00",
+    "Final_Price": "450.00",
+    "Comment": "Please deliver quickly"
 }
 
 //update order
@@ -459,38 +461,43 @@ content-type: application/json
 ###
 DELETE http://localhost:5000/api/orders/1
 
-//......................................................./RestaurantOwner...............................................................//
+//.......................................................  Restaurant Owner...............................................................//
 
-//get all status 
+
+//create  restaurant owners
 ###
-GET http://localhost:5000/api//RestaurantOwner
+POST http://localhost:5000/api/RestaurantOwner
+content-type: application/json
+
+{
+    "Restaurant_Id": 1,
+    "Owner_Id": 1
+
+}
+
+//get all restaurant owners
+###
+GET http://localhost:5000/api/RestaurantOwner
 Authorization: <your_token>
 
-//get status catalog by Id
+//get restaurant owners with id
 ###
-GET http://localhost:5000/api//RestaurantOwner/1
+GET http://localhost:5000/api/RestaurantOwner/1
 
-//create status catalog
+
+//update restaurant owner
 ###
-POST http://localhost:5000/api//RestaurantOwner
+PUT http://localhost:5000/api/RestaurantOwner/1
 content-type: application/json
 
 {
-    "Name": "In Progress"
+    "Restaurant_Id": 1,
+    "Owner_Id": 1
 }
 
-//update status catalog
+//delete restaurant owner
 ###
-PUT http://localhost:5000/api//RestaurantOwner/1
-content-type: application/json
-
-{
-    "Name": "Completed"
-}
-
-//delete status catalog
-###
-DELETE http://localhost:5000/api//RestaurantOwner/1
+DELETE http://localhost:5000/api/RestaurantOwner/1
 
 //.......................................................comment...............................................................//
 
@@ -562,6 +569,41 @@ content-type: application/json
     "Owner_Id":2
 }
 
-//delete Restaurant Owners catalog
+//delete Restaurant Owners
 ###
 DELETE http://localhost:5000/api/RestaurantOwner/1
+
+
+//.......................................................status-catalogs...............................................................//
+
+//get all status-catalogs
+###
+GET http://localhost:5000/api/status-catalogs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiZGFuaWVsQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZGFuaWVsIiwidXNlclR5cGUiOiJhZG1pbiIsImV4cCI6MTc0OTA1NDkzMCwiaWF0IjoxNzQ5MDUxMzMwfQ.u5e51kHHu6DK-SDQ2Imi0gApMITH6dY-Mq3KNLAATCM
+
+//get status-catalogs by Id
+###
+GET http://localhost:5000/api/status-catalogs/3
+
+//create status-catalogs
+###
+POST http://localhost:5000/api/status-catalogs
+content-type: application/json
+
+{
+    "Status_Catalog_Name":"bevarages"
+}
+
+//Update status-catalogs
+###
+PUT  http://localhost:5000/api/status-catalogs/1
+content-type: application/json
+
+{
+    "Status_Catalog_Name":"bevarages"
+
+}
+
+//delete status-catalogs
+###
+DELETE http://localhost:5000/api/status-catalogs/2
