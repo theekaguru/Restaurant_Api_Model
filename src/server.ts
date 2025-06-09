@@ -15,6 +15,7 @@ import { commentRouter } from './comment/comment.route';
 import { categoryRouter } from './category/category.route';
 import { orderStatusRouter } from './order_status/order_status.route';
 import { restaurantownerRouter } from './restaurant_owner/restaurant_owner.route';
+import { rateLimiterMiddleware } from './middleware/ratelimiter';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ const app: Application = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger);
+app.use(rateLimiterMiddleware);
 
 
 

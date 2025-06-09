@@ -103,7 +103,7 @@ content-type: application/json
 
 //delete user
 ### 
-DELETE http://localhost:5000/api/states/1
+DELETE http://localhost:5000/api/states/2
 Authorization: 
   
 
@@ -120,7 +120,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImVtYWlsIjoi
 
 //get city by Id
 ###
-GET http://localhost:5000/api/city/1
+GET http://localhost:5000/api/city/2
 
 //create city
 ###
@@ -134,7 +134,7 @@ content-type: application/json
 
 //Update city
 ###
-PUT  http://localhost:5000/api/city/1
+PUT  http://localhost:5000/api/city/3
 content-type: application/json
 
 {
@@ -144,7 +144,7 @@ content-type: application/json
 
 //delete city
 ### 
-DELETE http://localhost:5000/api/city/1
+DELETE http://localhost:5000/api/city/3
   
 
   //......................................................................menu_Item.........................................................................//
@@ -190,7 +190,7 @@ content-type: application/json
 
 //delete menu item
 ###
-DELETE http://localhost:5000/api/menu_items/1
+DELETE http://localhost:5000/api/menu_items/9
 
 //.......................................................driver...............................................................//
 
@@ -233,7 +233,7 @@ content-type: application/json
 
 //delete driver
 ###
-DELETE http://localhost:5000/api/drivers/1
+DELETE http://localhost:5000/api/drivers/3
 
 //.......................................................address...............................................................//
 
@@ -277,7 +277,7 @@ content-type: application/json
 
 //delete address
 ###
-DELETE http://localhost:5000/api/addresses/1
+DELETE http://localhost:5000/api/addresses/3
 
 
 //.......................................................orders...............................................................//
@@ -301,8 +301,8 @@ content-type: application/json
     "Estimated_Delivery_Time": "2023-09-15T12:00:00Z",
     "Actual_Delivery_Time": "2023-09-15T12:30:00Z",
     "Delivery_Address_Id": 1,
-    "User_Id": 1,
-    "Driver_Id": 1,
+    "User_Id": 2,
+    "Driver_Id": 5,
     "Price": 500,
     "Discount": 50,
     "Final_Price": 450,

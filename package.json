@@ -23,6 +23,7 @@
     "drizzle-kit": "^0.31.1",
     "drizzle-orm": "^0.43.1",
     "express": "^5.1.0",
+    "express-with-drizzle": "link:",
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^7.0.3",
     "pg": "^8.16.0",

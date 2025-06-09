@@ -8,13 +8,13 @@ export const restaurantownerRouter = Router();
 restaurantownerRouter.get('/RestaurantOwner' ,getRestaurantOwner)
 
 //get reastaurant  owner by id
-restaurantownerRouter.get('/restaurantowner/:id' , getRestaurantOwnerById)
+restaurantownerRouter.get('/RestaurantOwner/:id' , getRestaurantOwnerById)
 
 //create Restaurant Owner
 restaurantownerRouter.post('/RestaurantOwner' , createRestaurantOwner)
 
 //updating Restaurant owner 
-restaurantownerRouter.put('/restaurantowner' , updateRestaurantOwner)
+restaurantownerRouter.put('/RestaurantOwner' , updateRestaurantOwner)
 
 //delete Restaurant Owner
 
