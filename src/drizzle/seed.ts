@@ -91,7 +91,7 @@ async function seed() {
  const [Burger] = await db.insert(Orders_Table).values({
   Restaurant_Id: LC_MARIOT.Restaurant_Id,
   Estimated_Delivery_Time: "today 11:30am",
-  Actual_Delivery_Time: "idi mubarak ",  
+  Actual_Delivery_Time: "2025-06-09T11:30:00Z",  
   Delivery_Address_Id: LA_Lakers.Address_Id,
   User_Id: Ascar.User_Id,
   Driver_Id: Kyla.Driver_Id,
@@ -135,4 +135,4 @@ seed().catch((err) => {
   console.error("Seeding error:", err);
   process.exit(1);
 });
-console.log("Seeding completed successfully.");
+console.log("Seeding completed successfully.🚀🚀🚀");

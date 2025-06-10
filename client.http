@@ -9,12 +9,10 @@ GET http://localhost:5000/
 //get all users
 ###
 GET http://localhost:5000/api/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiZGFuaWVsQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZGFuaWVsIiwidXNlclR5cGUiOiJhZG1pbiIsImV4cCI6MTc0OTA1NDkzMCwiaWF0IjoxNzQ5MDUxMzMwfQ.u5e51kHHu6DK-SDQ2Imi0gApMITH6dY-Mq3KNLAATCM
-
-
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyX0lkIjozOCwiRW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJGdWxsTmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJhZG1pbiIsImV4cCI6MTc0OTU3MDIwMywiaWF0IjoxNzQ5NTY2NjAzfQ.HShviXEmPP87uL5-5ye3WSYLYOLsRKSKYCSXqjTPwOw
 //get user by Id
 ###
-GET http://localhost:5000/api/users/1
+GET http://localhost:5000/api/users/2
 
 //register a user
 ###
@@ -24,10 +22,10 @@ content-type: application/json
 {
     "Full_Name": "admin",
     "Contact_Phone": "0706199668",
-    "Email": "theekagurufc25@gmail.com",
+    "Email": "admin@gmail.com",
     "Confirmation_Code": "A1020",
     "Password": "admin",
-    "User_Type": "admin"
+    "User_Type":"admin"
 }
 
 //login a user
@@ -36,34 +34,28 @@ POST http://localhost:5000/api/auth/login
 content-type: application/json
 
 {  
-    "Email": "theekagurufc25@gmail.com",
-    "Password": "admin"
-    
-    
+    "Email": "admin@gmail.com",
+    "Password": "admin"   
 }
-
 
 //Update user
 ###
-PUT  http://localhost:5000/api/users/5
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiZnVsbE5hbWUiOiJhZG1pbiIsInVzZXJUeXBlIjoiYWRtaW4iLCJleHAiOjE3NDkwNTA5NjksImlhdCI6MTc0OTA0NzM2OX0.7zUvcqkawulbvmWhkC8VsuzxI7N8zn75TUbIiMuj5sc
+PUT  http://localhost:5000/api/users/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyX0lkIjozNywiRW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJGdWxsTmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJhZG1pbiIsImV4cCI6MTc0OTU2NTMzMywiaWF0IjoxNzQ5NTYxNzMzfQ.SM7AjjWQtn8sJxzXlCKUjn7ZRRR1ZHWpYk00FAbgoQw
 content-type: application/json
 
 {
-    "Full_Name": "kaguru",
-    "Contact_Phone": 1020,
-    "Email": "kaguru@gmail.com",
+    "Full_Name": "Ascah",
+    "Contact_Phone": 12345678,
+    "Email": "ascah@gmail.com",
     "Confirmation_Code": "A1020",
     "Password": "daniel123",
-    "User_Type": "member"
-    
+    "User_Type": "member"  
 }
-
 //delete user
 ### 
-DELETE http://localhost:5000/api/users/4
-  
-
+DELETE http://localhost:5000/api/users/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyX0lkIjozNywiRW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJGdWxsTmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJhZG1pbiIsImV4cCI6MTc0OTU2NTMzMywiaWF0IjoxNzQ5NTYxNzMzfQ.SM7AjjWQtn8sJxzXlCKUjn7ZRRR1ZHWpYk00FAbgoQw
 
  // .......................................................state...............................................................//
 
@@ -472,7 +464,7 @@ content-type: application/json
 
 {
     "Restaurant_Id": 1,
-    "Owner_Id": 1
+    "Owner_Id": 2
 
 }
 
@@ -498,7 +490,7 @@ content-type: application/json
 
 //delete restaurant owner
 ###
-DELETE http://localhost:5000/api/RestaurantOwner/1
+DELETE http://localhost:5000/api/RestaurantOwner/15
 
 //.......................................................comment...............................................................//
 

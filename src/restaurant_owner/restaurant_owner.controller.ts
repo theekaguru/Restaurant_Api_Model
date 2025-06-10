@@ -90,19 +90,16 @@ export const deleteRestaurantOwner = async (req: Request, res: Response) => {
         return;
     }
     try {
-        const existingRestaurantOwner = await deleteRestaurantOwnerServices(Restaurant_Owner_Id)
-
-        if(!existingRestaurantOwner){
-            res.status(200).json({message: "Restaurant Owner 👨‍💼 does not exit 🤷‍♂️"})
+        // Check if the restaurant owner exists
+        const existingRestaurantOwner = await getRestaurantOwnerByIdServices(Restaurant_Owner_Id);
+        if (!existingRestaurantOwner) {
+            res.status(404).json({ message: "Restaurant Owner 👨‍💼 does not exist 🤷‍♂️" });
             return;
         }
+        // Delete the restaurant owner
         const deletedRestaurantOwner = await deleteRestaurantOwnerServices(Restaurant_Owner_Id);
-        if (deletedRestaurantOwner) {
-            res.status(200).json({message:deletedRestaurantOwner});
-        } else {
-            res.status(404).json({ message: "Restaurant Owner 👨‍💼 not found 🔍" });
-        }
-    } catch (error:any) {    
-        res.status(500).json({ error:error.message || "Failed 🚫 to delete RestaurantOwner 🪧" });
+        res.status(200).json({ message: deletedRestaurantOwner });
+    } catch (error: any) {    
+        res.status(500).json({ error: error.message || "Failed 🚫 to delete RestaurantOwner 🪧" });
     }    
 }

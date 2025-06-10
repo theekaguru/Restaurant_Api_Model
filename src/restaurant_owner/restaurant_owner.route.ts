@@ -14,8 +14,8 @@ restaurantownerRouter.get('/RestaurantOwner/:id' , getRestaurantOwnerById)
 restaurantownerRouter.post('/RestaurantOwner' , createRestaurantOwner)
 
 //updating Restaurant owner 
-restaurantownerRouter.put('/RestaurantOwner' , updateRestaurantOwner)
+restaurantownerRouter.put('/RestaurantOwner:id' , updateRestaurantOwner)
 
 //delete Restaurant Owner
 
-restaurantownerRouter.delete('/RestaurantOwner' , deleteRestaurantOwner)
+restaurantownerRouter.delete('/RestaurantOwner/:id' , deleteRestaurantOwner)

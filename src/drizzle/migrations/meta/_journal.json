@@ -8,6 +8,13 @@
       "when": 1749327083822,
       "tag": "0000_slim_tusk",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1749528297576,
+      "tag": "0001_plain_millenium_guard",
+      "breakpoints": true
     }
   ]
 }

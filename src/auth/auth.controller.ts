@@ -27,40 +27,44 @@ export const createUser = async(req:Request , res:Response) =>{
 }
 
 //login user
-export const loginUser =async(req:Request , res:Response) =>{
+export const loginUser = async (req: Request, res: Response) => {
     const user = req.body;
 
     try {
-        
-        const existingUer =await getUserByEmailServices(user.email);
-    if(!existingUer){
-        res.status(404).json({error:"User not Found 🔎"});
-        return;
-    }
+        // Use the correct field names (capitalized)
+        const existingUser = await getUserByEmailServices(user.Email);
+        if (!existingUser) {
+            res.status(404).json({ error: "User not Found 🔎" });
+            return;
+        }
 
-    //compare the password
-    const isMatch = bcrypt.compareSync(user.password , existingUer.Password)
-    if(!isMatch){
-        res.status(401).json({error:"invalid password ⛔⛔"});
-        return;
-    }
-          
-    //generate token
-    let payload = {
-        User_Id:existingUer.User_Id,
-        Email:existingUer.Email,
-        FullName : existingUer.Full_Name,
+        // Compare the password
+        const isMatch = bcrypt.compareSync(user.Password, existingUser.Password);
+        if (!isMatch) {
+            res.status(401).json({ error: "invalid password ⛔⛔" });
+            return;
+        }
 
-        //expire
-        exp: Math.floor(Date.now()/1000) +(60*60)  //token expire in an hour
-    }
+        // Generate token
+        let payload = {
+            User_Id: existingUser.User_Id,
+            Email: existingUser.Email,
+            FullName: existingUser.Full_Name,
+            userType: existingUser.User_Type,
+            exp: Math.floor(Date.now() / 1000) + (60 * 60)
+        };
 
-    let secret = process.env.JWT_SECRET as string
-    const token = jwt.sign(payload , secret)
-    res.status(200).json({token , User_Id:existingUer.User_Id , Email:existingUer.Email , FullName:existingUer.Full_Name})
+        let secret = process.env.JWT_SECRET as string;
+        const token = jwt.sign(payload, secret);
+        res.status(200).json({
+            token,
+            User_Id: existingUser.User_Id,
+            Email: existingUser.Email,
+            FullName: existingUser.Full_Name,
+            User_Type: existingUser.User_Type
+        });
 
-    } catch (error:any) {
-        res.status(500).json({error:error.message || "failed to login"})
-        
+    } catch (error: any) {
+        res.status(500).json({ error: error.message || "failed to login" });
     }
 }

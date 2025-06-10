@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { createUser, deleteUser, getUserById, getUsers, updateUser } from "./user.controller";
-import { adminRoleAuth ,bothRoleAuth } from "../middleware/bearAuth";
+import { adminRoleAuth, allRoleAuth } from "../middleware/bearAuth";
 
 export const userRouter = Router();
 
@@ -12,13 +12,13 @@ export const userRouter = Router();
 userRouter.post('/users', createUser);
 
 // Get all users
-userRouter.get('/users',/*adminRoleAuth ,*/ getUsers);
+userRouter.get('/users',adminRoleAuth , getUsers);
 
 // Get user by ID
 userRouter.get('/users/:id', getUserById);
 
 // Update an existing user
-userRouter.put('/users/:id' ,/* bothRoleAuth ,*/updateUser);
+userRouter.put('/users/:id' , allRoleAuth , updateUser);
 
 // Delete an existing user
-userRouter.delete('/users/:id',/* adminRoleAuth ,*/ deleteUser);
+userRouter.delete('/users/:id', adminRoleAuth , deleteUser);
