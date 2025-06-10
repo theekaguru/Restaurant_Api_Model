@@ -17,6 +17,7 @@ import { orderStatusRouter } from './order_status/order_status.route';
 import { restaurantownerRouter } from './restaurant_owner/restaurant_owner.route';
 import { rateLimiterMiddleware } from './middleware/ratelimiter';
 
+
 dotenv.config();
 
 const app: Application = express();
@@ -29,13 +30,13 @@ app.use(rateLimiterMiddleware);
 
 
 
+
 //default route
 app.get('/', (req, res:Response) => {
   res.send("Welcome to Express API Backend WIth Drizzle ORM and PostgreSQL");
 });
 
 // Importing user routes
-app.use('/api',authRouter)
 
 app.use('/api',addressRouter) //1
 app.use('/api' ,categoryRouter) //2
@@ -52,6 +53,8 @@ app.use('/api' , statusCatalogRouter) //12
 app.use('/api',userRouter) //13
 app.use('/api' ,commentRouter) //14
 
+
+app.use('/api' ,authRouter)
 
 
 const PORT = process.env.PORT || 5000;

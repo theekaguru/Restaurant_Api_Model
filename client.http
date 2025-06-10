@@ -18,26 +18,27 @@ GET http://localhost:5000/api/users/1
 
 //register a user
 ###
-POST http://localhost:5000/api/users
+POST http://localhost:5000/api/auth/register
 content-type: application/json
 
 {
-    "Full_Name": "daniel",
-    "Contact_Phone": 1020,
-    "Email": "daniel@gmail.com",
+    "Full_Name": "admin",
+    "Contact_Phone": "0706199668",
+    "Email": "theekagurufc25@gmail.com",
     "Confirmation_Code": "A1020",
-    "Password": "daniel123",
+    "Password": "admin",
     "User_Type": "admin"
 }
 
 //login a user
 ###
-POST http://localhost:5000/api/login
+POST http://localhost:5000/api/auth/login
 content-type: application/json
 
 { 
-    "email":"Admin@gmail.com",
-    "password":"Admin123"
+    "Email": "theekagurufc25@gmail.com",
+    "Password": "admin"
+    
     
 }
 

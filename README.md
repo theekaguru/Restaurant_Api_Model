@@ -17,3 +17,9 @@ pnpm add -D @types/jsonwebtoken
 
 pnpm install nodemailer
 pnpm add -D @types/nodemailer
+
+
+//installing bcrypt
+pnpm add bcypt
+
+pmpm add -D @types/bcrypt

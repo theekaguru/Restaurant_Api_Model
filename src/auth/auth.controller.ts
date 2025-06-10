@@ -1,91 +1,42 @@
-import { Request, Response } from "express";
-import bcrypt from "bcrypt"
-import {createUserServices } from "./auth.service";
+import { Request , Response } from "express";
+import bcrypt from 'bcrypt'
+import { createUserServices, getUserByEmailServices } from "./auth.service";
 import { error } from "console";
-import jwt from "jsonwebtoken"
 
-
-//register login
-export const createUser =async (req:Request, res:Response) =>{
-
-    try {
-        const { Full_Name , Contact_Phone , Phone_Verified , Email ,Email_verified , Confirmation_Code , Password} = req.body;
-    if (!Full_Name || !Contact_Phone || !Phone_Verified || !Email || !Email_verified || !Confirmation_Code || !Password ) {
+//register Login
+export const createUser = async(req:Request , res:Response) =>{
+        const user = req.body;
+    try {  
+    if (!user.Full_Name || !user.Contact_Phone  || !user.Email  || !user.Confirmation_Code || !user.Password ) {
         res.status(400).json({ error: "All fields 🖇️ are required" });
+        return;
+        
+    }
+
+    //generate hashed passwors
+
+         const salt = bcrypt.genSaltSync(10);
+         const hashedPassword = bcrypt.hashSync(user.Password , salt)
+         console.log ("🚀 ~ created ~hashedPassword:" , hashedPassword)
+         user.Password = hashedPassword
+
+          const newUser = await createUserServices(user)
+          res.status(201).json({message:newUser})
+    } catch (error : any) {
+        res.status(500).json({error:error.message || "failed to create user"})        
+}
+}
+
+//login user
+export const loginUser =async(req:Request , res:Response) =>{
+    const user = req.body;
+
+    const existinguUer =await getUserByEmailServices(user.email);
+    if(!existinguUer){
+        res.status(404).json({error:"User not Found"});
         return;
     }
 
-    //generate hashed password
-    const salt = bcrypt.genSaltSync(10);
-     const hashedPassword = bcrypt.hashSync(Password,salt)
-       console.log("🚀 ~ createdUser ~ hashedPassword:" , hashedPassword)
-
-     } catch (error) {
-
-     }
-    
+    //compare the password
+    const isMatch = bcrypt.compareSync(user.password , existinguUer.Password)
 }
-
-
-    /*
-    user.password = hashedPassword
-     const newUser = await createUserServices(user)
-     res.status(201).json({message:newUser})
-
-    } catch (error:any) {
-        res.status(500).json({error:error.message || "failed to create user 🚫🚫"})
-    }
-}
-
-//login 
-
-//finding the user
-export const loginUser =async(req:Request , res:Response) =>{
-    const user =req.body;
-    try {
-
-         const existingUser = await getUserByEmailService(user.email)
-        if (!existingUser){
-            res.status(404).json({error:'user not found 😢😢'});
-            return;
-
-        }
-
-        //if found now we compare the pass
-        const isMatch = bcrypt.compareSync(user.password, existingUser.password)
-        if(!isMatch){
-            res.status(401).json({error:'invalid password 🙅‍♂️🙅‍♂️'});
-            return;
-        }
-
-        //Generate Tokken
-
-        let payload ={
-            userId: existingUser.userId,
-            email: existingUser.email,
-            fullName: existingUser.fullName,
-            userType: existingUser.userType,
-
-            
-        //expiring of the tocken
-        exp: Math.floor(Date.now()/1000) + (60*60) //toccken expires within 1 hour
-        
-        }
-        let secret = process.env.JWT_SECRET as string;
-
-        const token = jwt.sign(payload ,secret)
-
-
-        res.status(200).json({token , userId:existingUser.userId , email:existingUser.email , fullName:existingUser.fullName , userType:existingUser.userType})
-
-        
-    } catch (error:any) {
-
-        res.status(500).json({error:error.message || " oops 😢 failed to log in"})
-
-    }
-
-
-    }  
-
-    */

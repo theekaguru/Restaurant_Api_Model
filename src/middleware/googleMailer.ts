@@ -49,12 +49,27 @@ const mailOptions ={
     html: `<html>
     <head> </head>
     <body>
+    <div class ="email-container">
+    <h2>${subject}</h2>
+    <p>${message}</p>
+    <p>Enjoy Our Services!</p>
+    </div>
     
     </body>
-    </html>`
+    </html>
+    `,
 }
+    const mailResponse =await transporter.sendMail(mailOptions);
+
+    if(mailResponse.accepted.length > 0){
+        return "notification email sent successfully"
+    }else if(mailResponse.rejected.length>0){
+        return"notification email not sent , please try again"
+    }else{
+        return "Email server error"
+    }
         
     } catch (error) {
-        
+        return "Email Server Error"
     }
 }
