@@ -20,6 +20,11 @@ pnpm add -D @types/nodemailer
 
 
 //installing bcrypt
-pnpm add bcypt
 
+pnpm add bcypt
 pmpm add -D @types/bcrypt
+
+//installing Json Web Token
+
+pnpm install jsonwebtoken
+pnpm install -D @types/jsonwebtoken

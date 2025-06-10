@@ -2,7 +2,7 @@ import { relations } from "drizzle-orm";
 import { pgEnum, pgTable, serial, varchar, integer, boolean,timestamp,text, decimal } from "drizzle-orm/pg-core";
 
 // ENUMS
-export const roleEnum = pgEnum("role", ["admin", "driver", "owner", "member"]);
+export const roleEnum = pgEnum("User_Type", ["admin", "driver", "owner", "member"]);
 
 
 
@@ -23,7 +23,7 @@ export const User_Table = pgTable("User_Table", {
   Email_verified: boolean("Email_Verified").default(false),
   Confirmation_Code: text("Confirmation_Code"),
   Password: text("Password").notNull(),
-  User_Type: roleEnum("User_Type").default("member"),
+  User_Type: roleEnum("User_Type").default('member'),
   ...withTimestamps(),
 });
 
