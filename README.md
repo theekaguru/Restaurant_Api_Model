@@ -5,8 +5,6 @@ pnpm add bcrypt
 pnpm add -D @types/bcrypt
 
 
-
-
 //installing JWT
 
 pnpm add jsonwebtoken
@@ -28,3 +26,8 @@ pmpm add -D @types/bcrypt
 
 pnpm install jsonwebtoken
 pnpm install -D @types/jsonwebtoken
+
+
+//system test
+pnpm add -D jest supertest @types/jest @types/supertest ts-jest
+pnpm add -D @jest/types
