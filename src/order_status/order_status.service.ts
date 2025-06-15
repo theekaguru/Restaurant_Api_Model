@@ -7,13 +7,52 @@ import { Order_Status_Table, TOrder_Status_TableInsert, TOrder_Status_TableSelec
 
 //Get all Order Statuses
 export const getOrderStatusesServices = async():Promise<TOrder_Status_TableSelect[] | null> => {
-    return await db.query.Order_Status_Table.findMany({});
+    return await db.query.Order_Status_Table.findMany({
+        with: {
+            order: {
+                with: {
+                    restaurant: true,
+                    user: true,
+                    driver: {
+                        with: {
+                            user: true
+                        }
+                    },
+                    items: {
+                        with: {
+                            menuItem: true
+                        }
+                    }
+                }
+            },
+            statusCatalog: true
+        }
+    });
 }
 
-//Get State by ID
+//Get Order Status by ID
 export const getOrderStatusByIdServices = async(Order_Status_Id: number):Promise<TOrder_Status_TableSelect | undefined> => {
      return await db.query.Order_Status_Table.findFirst({
-        where: eq(Order_Status_Table.Order_Status_Id, Order_Status_Id)
+        where: eq(Order_Status_Table.Order_Status_Id, Order_Status_Id),
+        with: {
+            order: {
+                with: {
+                    restaurant: true,
+                    user: true,
+                    driver: {
+                        with: {
+                            user: true
+                        }
+                    },
+                    items: {
+                        with: {
+                            menuItem: true
+                        }
+                    }
+                }
+            },
+            statusCatalog: true
+        }
     })  
 }
 

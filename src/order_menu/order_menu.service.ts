@@ -7,13 +7,52 @@ import { Order_Menu_Item_Table, TOrder_Menu_Item_TableInsert, TOrder_Menu_Item_T
 
 //Get all Order Menu Items
 export const getOrderMenuItemsServices = async():Promise<TOrder_Menu_Item_TableSelect[] | null> => {
-    return await db.query.Order_Menu_Item_Table.findMany({});
+    return await db.query.Order_Menu_Item_Table.findMany({
+        with: {
+            order: {
+                with: {
+                    restaurant: true,
+                    user: true,
+                    driver: {
+                        with: {
+                            user: true
+                        }
+                    }
+                }
+            },
+            menuItem: {
+                with: {
+                    category: true,
+                    restaurant: true
+                }
+            }
+        }
+    });
 }
 
 //Get Order Menu Item by ID
 export const getOrderMenuItemByIdServices = async(Order_Menu_Item_Id: number):Promise<TOrder_Menu_Item_TableSelect | undefined> => {
      return await db.query.Order_Menu_Item_Table.findFirst({
-        where: eq(Order_Menu_Item_Table.Order_Menu_Item_Id, Order_Menu_Item_Id)
+        where: eq(Order_Menu_Item_Table.Order_Menu_Item_Id, Order_Menu_Item_Id),
+        with: {
+            order: {
+                with: {
+                    restaurant: true,
+                    user: true,
+                    driver: {
+                        with: {
+                            user: true
+                        }
+                    }
+                }
+            },
+            menuItem: {
+                with: {
+                    category: true,
+                    restaurant: true
+                }
+            }
+        }
     })  
 }
 

@@ -21,14 +21,3 @@ orderRouter.put('/orders/:id',/* adminRoleAuth, */ updateOrder);
 // Delete an existing order
 orderRouter.delete('/orders/:id', /*adminRoleAuth ,*/ deleteOrder);
 
-// Get order by ID
-orderRouter.get('/orders/:id',/* adminRoleAuth ,*/  getOrderById);
-
-// Create a new order
-orderRouter.post('/orders', /*adminRoleAuth ,*/  createOrder);
-
-// Update an existing order
-orderRouter.put('/orders/:id',/* adminRoleAuth, */ updateOrder);
-
-// Delete an existing order
-orderRouter.delete('/orders/:id', /*adminRoleAuth ,*/ deleteOrder);

@@ -1,4 +1,3 @@
-
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
 import { City_Table , TCity_TableInsert , TCity_TableSelect} from "../drizzle/schema";
@@ -8,13 +7,40 @@ import { City_Table , TCity_TableInsert , TCity_TableSelect} from "../drizzle/sc
 
 //Get all citys
 export const getCitysServices = async():Promise<TCity_TableSelect[] | null> => {
-    return await db.query.City_Table.findMany({});
+    return await db.query.City_Table.findMany({
+        with: {
+            state: true,
+            addresses: {
+                with: {
+                    user: true
+                }
+            },
+            restaurants: {
+                with: {
+                    menuItems: true
+                }
+            }
+        }
+    });
 }
 
 //Get city by ID
 export const getCityByIdServices = async(City_Id: number):Promise<TCity_TableSelect | undefined> => {
      return await db.query.City_Table.findFirst({
-        where: eq(City_Table.City_Id, City_Id)
+        where: eq(City_Table.City_Id, City_Id),
+        with: {
+            state: true,
+            addresses: {
+                with: {
+                    user: true
+                }
+            },
+            restaurants: {
+                with: {
+                    menuItems: true
+                }
+            }
+        }
     })  
 }
 

@@ -7,13 +7,130 @@ import { Orders_Table , TOrders_TableInsert, TOrders_TableSelect } from "../driz
 
 //Get all Orders
 export const getOrdersServices = async():Promise<TOrders_TableSelect[] | null> => {
-    return await db.query.Orders_Table.findMany({});
+    return await db.query.Orders_Table.findMany({
+        with: {
+            restaurant: {
+                columns: {
+                    Restaurant_Name: true
+                }
+            },
+            user: {
+                columns: {
+                    Full_Name: true
+                }
+            },
+            driver: {
+                columns: {
+                    Driver_Id: true
+                },
+                with: {
+                    user: {
+                        columns: {
+                            Full_Name: true
+                        }
+                    }
+                }
+            },
+            address: {
+                columns: {
+                    Street_Address_1: true,
+                    Street_Address_2: true,
+                    Zip_Code: true,
+                    Delivery_Instructions: true
+                },
+                with: {
+                    city: {
+                        columns: {
+                            City_Name: true
+                        }
+                    }
+                }
+            },
+            items: {
+                with: {
+                    menuItem: {
+                        columns: {
+                            Menu_Name: true,
+                            Price: true
+                        }
+                    }
+                }
+            },
+            statuses: {
+                with: {
+                    statusCatalog: {
+                        columns: {
+                            Status_Catalog_Name: true
+                        }
+                    }
+                }
+            }
+        }
+    });
 }
 
 //Get Order by ID
 export const getOrderByIdServices = async(Orders_Id: number):Promise<TOrders_TableSelect | undefined> => {
      return await db.query.Orders_Table.findFirst({
-        where: eq(Orders_Table.Orders_Id, Orders_Id)
+        where: eq(Orders_Table.Orders_Id, Orders_Id),
+        with: {
+            restaurant: {
+                columns: {
+                    Restaurant_Name: true
+                }
+            },
+            user: {
+                columns: {
+                    Full_Name: true
+                }
+            },
+            driver: {
+                columns: {
+                    Driver_Id: true
+                },
+                with: {
+                    user: {
+                        columns: {
+                            Full_Name: true
+                        }
+                    }
+                }
+            },
+            address: {
+                columns: {
+                    Street_Address_1: true,
+                    Street_Address_2: true,
+                    Zip_Code: true,
+                    Delivery_Instructions: true
+                },
+                with: {
+                    city: {
+                        columns: {
+                            City_Name: true
+                        }
+                    }
+                }
+            },
+            items: {
+                with: {
+                    menuItem: {
+                        columns: {
+                            Menu_Name: true,
+                            Price: true
+                        }
+                    }
+                }
+            },
+            statuses: {
+                with: {
+                    statusCatalog: {
+                        columns: {
+                            Status_Catalog_Name: true
+                        }
+                    }
+                }
+            }
+        }
     })  
 }
 

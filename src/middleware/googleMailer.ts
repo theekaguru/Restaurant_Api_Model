@@ -41,20 +41,51 @@ export const sendNotificationEmail =async (email:string , subject:string , messa
 
 });
 
-const mailOptions ={
+const mailOptions = {
     from: process.env.EMAIL_SENDER,
-    to:  email ,
+    to: email,
     subject: subject,
     text: `${message}\n`,
-    html: `<html>
-    <head> </head>
-    <body>
-    <div class ="email-container">
-    <h2>${subject}</h2>
-    <p>${message}</p>
-    <p>Enjoy Our Services!</p>
-    </div>
-    
+    html: `
+    <html>
+    <head>
+      <style>
+        .email-container {
+          font-family: 'Segoe UI', Arial, sans-serif;
+          background: #f9f9f9;
+          padding: 32px;
+          border-radius: 10px;
+          max-width: 480px;
+          margin: 40px auto;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .email-header {
+          color: #2d7ff9;
+          margin-bottom: 16px;
+        }
+        .email-message {
+          color: #333;
+          font-size: 1.1em;
+          margin-bottom: 24px;
+        }
+        .email-footer {
+          color: #888;
+          font-size: 0.95em;
+          margin-top: 32px;
+          border-top: 1px solid #eee;
+          padding-top: 12px;
+        }
+      </style>
+    </head>
+    <body style="background: #f0f4f8;">
+      <div class="email-container">
+        <h2 class="email-header">${subject}</h2>
+        <p class="email-message">${message}</p>
+        <p>Enjoy Our Services!</p>
+        <div class="email-footer">
+          &copy; ${new Date().getFullYear()} Thee Restaurant. All rights reserved.
+        </div>
+      </div>
     </body>
     </html>
     `,

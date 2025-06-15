@@ -7,6 +7,12 @@ import { TUser_TableInsert , TUser_TableSelect, User_Table } from "../drizzle/sc
 
 // Register A New User
 export const createUserServices = async(user: TUser_TableInsert):Promise<string> => {
+    // Check if user with email already exists
+    const existingUser = await getUserByEmailServices(user.Email);
+    if (existingUser) {
+        throw new Error("User with this email already exists");
+    }
+    
     await db.insert(User_Table).values(user).returning();
     return "User 👤 created 👻 successfully 🥳 ";
 }

@@ -1,4 +1,3 @@
-
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
 import { Address_Table , TAddress_TableInsert , TAddress_TableSelect } from "../drizzle/schema";
@@ -8,13 +7,50 @@ import { Address_Table , TAddress_TableInsert , TAddress_TableSelect } from "../
 
 //Get all Addresses
 export const getAddressesServices = async():Promise<TAddress_TableSelect[] | null> => {
-    return await db.query.Address_Table.findMany({});
+    return await db.query.Address_Table.findMany({
+        with: {
+            user: true,
+            city: {
+                with: {
+                    state: true
+                }
+            },
+            orders: {
+                with: {
+                    restaurant: true,
+                    items: {
+                        with: {
+                            menuItem: true
+                        }
+                    }
+                }
+            }
+        }
+    });
 }
 
 //Get Address by ID
 export const getAddressByIdServices = async(Address_Id: number):Promise<TAddress_TableSelect | undefined> => {
      return await db.query.Address_Table.findFirst({
-        where: eq(Address_Table.Address_Id, Address_Id)
+        where: eq(Address_Table.Address_Id, Address_Id),
+        with: {
+            user: true,
+            city: {
+                with: {
+                    state: true
+                }
+            },
+            orders: {
+                with: {
+                    restaurant: true,
+                    items: {
+                        with: {
+                            menuItem: true
+                        }
+                    }
+                }
+            }
+        }
     })  
 }
 

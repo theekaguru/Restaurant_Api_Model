@@ -19,7 +19,7 @@ export const User_Table = pgTable("User_Table", {
   Full_Name: varchar("Full_Name", { length: 255 }),
   Contact_Phone: integer("Contact_Phone"),
   Phone_Verified: boolean("Phone_Verified").default(false), 
-  Email: varchar("Email", { length: 255 }).notNull(),
+  Email: varchar("Email", { length: 255 }).notNull().unique(),
   Email_verified: boolean("Email_Verified").default(false),
   Confirmation_Code: text("Confirmation_Code"),
   Password: text("Password").notNull(),

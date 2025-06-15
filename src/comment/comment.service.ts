@@ -7,13 +7,40 @@ import { Comment_Table, TComment_TableInsert, TComment_TableSelect } from "../dr
 
 //Get all Comments
 export const getCommentsServices = async():Promise<TComment_TableSelect[] | null> => {
-    return await db.query.Comment_Table.findMany({});
+    return await db.query.Comment_Table.findMany({
+        with: {
+            order: {
+                with: {
+                    restaurant: true,
+                    items: {
+                        with: {
+                            menuItem: true
+                        }
+                    }
+                }
+            },
+            user: true
+        }
+    });
 }
 
 //Get Comment by ID
 export const getCommentByIdServices = async(Comment_Id: number):Promise<TComment_TableSelect | undefined> => {
      return await db.query.Comment_Table.findFirst({
-        where: eq(Comment_Table.Comment_Id, Comment_Id)
+        where: eq(Comment_Table.Comment_Id, Comment_Id),
+        with: {
+            order: {
+                with: {
+                    restaurant: true,
+                    items: {
+                        with: {
+                            menuItem: true
+                        }
+                    }
+                }
+            },
+            user: true
+        }
     })  
 }
 

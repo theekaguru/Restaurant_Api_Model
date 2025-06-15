@@ -1,4 +1,3 @@
-
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
 import {Driver_Table , TDriver_TableInsert , TDriver_TableSelect} from "../drizzle/schema";
@@ -8,13 +7,40 @@ import {Driver_Table , TDriver_TableInsert , TDriver_TableSelect} from "../drizz
 
 //Get all Drivers
 export const getDriversServices = async():Promise<TDriver_TableSelect[] | null> => {
-    return await db.query.Driver_Table.findMany({});
+    return await db.query.Driver_Table.findMany({
+        with: {
+            user: true,
+            orders: {
+                with: {
+                    restaurant: true,
+                    items: {
+                        with: {
+                            menuItem: true
+                        }
+                    }
+                }
+            }
+        }
+    });
 }
 
 //Get Driver by ID
 export const getDriverByIdServices = async(Driver_Id: number):Promise<TDriver_TableSelect | undefined> => {
      return await db.query.Driver_Table.findFirst({
-        where: eq(Driver_Table.Driver_Id, Driver_Id)
+        where: eq(Driver_Table.Driver_Id, Driver_Id),
+        with: {
+            user: true,
+            orders: {
+                with: {
+                    restaurant: true,
+                    items: {
+                        with: {
+                            menuItem: true
+                        }
+                    }
+                }
+            }
+        }
     })  
 }
 

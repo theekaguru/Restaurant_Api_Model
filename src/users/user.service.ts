@@ -1,4 +1,3 @@
-
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
 import {User_Table , TUser_TableSelect , TUser_TableInsert } from "../drizzle/schema";
@@ -12,13 +11,52 @@ import {User_Table , TUser_TableSelect , TUser_TableInsert } from "../drizzle/sc
 
 //Get all users
 export const getUsersServices = async():Promise<TUser_TableSelect[] | null> => {
-    return await db.query.User_Table.findMany({});
+    return await db.query.User_Table.findMany({
+        with: {
+            addresses: {
+                with: {
+                    city: true
+                }
+            },
+            comments: true,
+            orders: {
+                with: {
+                    restaurant: true,
+                    items: {
+                        with: {
+                            menuItem: true
+                        }
+                    }
+                }
+            },
+            driver: true
+        }
+    });
 }
 
 //Get user by ID
 export const getUserByIdServices = async(User_Id: number):Promise<TUser_TableSelect | undefined> => {
      return await db.query.User_Table.findFirst({
-        where: eq(User_Table.User_Id, User_Id)
+        where: eq(User_Table.User_Id, User_Id),
+        with: {
+            addresses: {
+                with: {
+                    city: true
+                }
+            },
+            comments: true,
+            orders: {
+                with: {
+                    restaurant: true,
+                    items: {
+                        with: {
+                            menuItem: true
+                        }
+                    }
+                }
+            },
+            driver: true
+        }
     })  
 }
 
